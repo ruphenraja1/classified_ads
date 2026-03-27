@@ -1,0 +1,79 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyc
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Django
+*.log
+db.sqlite3
+backend/db.sqlite3
+local_settings.py
+
+# Next.js
+.next/
+frontend/.next/
+
+# Next.js Standalone build output
+frontend/.next/standalone/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+frontend/next-env.d.ts
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.prod.example
+backend/.env
+frontend/.env
+
+# Development databases
+dev.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+nul
+.DS_Store
+
+# ML Models
+LLM_Model/
+
+# Scripts
+build.sh
+migrate_sqlite_to_pg.py
+
+# Test files
+backend/tests/
+
+# Debug files
+backend/debug/
+backend/scripts/
+
+# Misc
+coverage/
+.vercel
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blocked User Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-direction: column; height: 90vh; }
+        .list { flex: 1; overflow-x: auto; border: 1px solid #ccc; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+
+        .drilldown { color: blue; cursor: pointer; }
+        .query-row input { width: 100%; }
+        button { margin: 5px; padding: 8px 16px; }
+
+    </style>
+</head>
+<body>
+    <h1>Blocked User Management</h1>
+    <div>
+        <button onclick="addNew()">Add</button>
+        <button onclick="toggleQuery()">Query</button>
+        <button onclick="queryGo()" id="queryGo" style="display:none;">Query Go</button>
+        <button onclick="deleteSelected()">Delete</button>
+    </div>
+        <div class="list">
+            <table id="blockeduserTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>ID</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Blocked At</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody id="blockeduserBody">
+                    {% for blockeduser in blockedusers %}
+                    <tr>
+                        <td><input type="checkbox" class="rowSelect" value="{{ blockeduser.id }}"></td>
+                        <td>{{ blockeduser.id }}</td>
+                        <td class="drilldown" onclick="loadDetail({{ blockeduser.id }})">{{ blockeduser.phone }}</td>
+                        <td>{{ blockeduser.status }}</td>
+                        <td>{{ blockeduser.blocked_at }}</td>
+                        <td>{{ blockeduser.reason }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="detail">
+            <form id="blockeduserForm" method="post" action="/api/admin/blockeduser/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <label>Phone: <input type="text" name="phone" id="phone" required></label>
+                    <label>Status: <select name="status" id="status">
+                        <option value="BLOCKED">BLOCKED</option>
+                        <option value="UNBLOCKED">UNBLOCKED</option>
+                    </select></label>
+                    <label>Reason: <textarea name="reason" id="reason"></textarea></label>
+                </div>
+                <br><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let isQueryMode = false;
+
+        document.getElementById('selectAll').addEventListener('change', function() {
+            const checks = document.querySelectorAll('.rowSelect');
+            checks.forEach(c => c.checked = this.checked);
+        });
+
+        function toggleQuery() {
+            isQueryMode = !isQueryMode;
+            const tbody = document.getElementById('blockeduserBody');
+            if (isQueryMode) {
+                tbody.innerHTML = `
+                    <tr class="query-row">
+                        <td></td>
+                        <td><input type="text" id="q_id"></td>
+                        <td><input type="text" id="q_phone"></td>
+                        <td><select id="q_status"><option value="">All</option><option value="BLOCKED">BLOCKED</option><option value="UNBLOCKED">UNBLOCKED</option></select></td>
+                        <td></td>
+                        <td><input type="text" id="q_reason"></td>
+                    </tr>
+                `;
+                document.getElementById('queryGo').style.display = 'inline';
+            } else {
+                location.reload(); // Reload to show data
+            }
+        }
+
+        function queryGo() {
+            const params = new URLSearchParams();
+            const q_id = document.getElementById('q_id').value.trim();
+            const q_phone = document.getElementById('q_phone').value.trim();
+            const q_status = document.getElementById('q_status').value.trim();
+            const q_reason = document.getElementById('q_reason').value.trim();
+            if (q_id) params.append('id', q_id);
+            if (q_phone) params.append('phone', q_phone);
+            if (q_status) params.append('status', q_status);
+            if (q_reason) params.append('reason', q_reason);
+            window.location.href = `/api/admin/blockeduser/?${params}`;
+        }
+
+        function addNew() {
+            // Open empty detail in full screen
+            fetch('/api/admin/blockeduser/new/')
+                .then(response => response.text())
+                .then(html => {
+                    const newWindow = window.open('', '_blank');
+                    newWindow.document.write(html);
+                    newWindow.document.close();
+                });
+        }
+
+        function deleteSelected() {
+            const selected = Array.from(document.querySelectorAll('.rowSelect:checked')).map(c => c.value);
+            if (selected.length && confirm('Delete selected?')) {
+                fetch('/api/admin/blockeduser/delete/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value },
+                    body: JSON.stringify({ ids: selected })
+                }).then(() => location.reload());
+            }
+        }
+
+        function loadDetail(id) {
+            // Open in same tab
+            window.location.href = `/api/admin/blockeduser/${id}/`;
+        }
+    </script>
+</body>
+</html>

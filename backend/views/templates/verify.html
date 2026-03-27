@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Content Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        textarea { width: 100%; height: 100px; }
+        button { margin-top: 10px; padding: 10px 20px; }
+        .message { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+        .blocked { background-color: #f8d7da; color: #721c24; }
+        .allowed { background-color: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <h1>Content Verification</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="text" placeholder="Enter word or sentence to verify" required>{% if text %}{{ text }}{% endif %}</textarea>
+        <br>
+        <button type="submit">Verify</button>
+    </form>
+    {% if message %}
+    <div class="message {% if 'Blocked' in message %}blocked{% else %}allowed{% endif %}">
+        {{ message }}
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ad Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-direction: column; height: 90vh; }
+        .list { flex: 1; overflow-x: auto; border: 1px solid #ccc; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+
+        .drilldown { color: blue; cursor: pointer; }
+        .query-row input { width: 100%; }
+        button { margin: 5px; padding: 8px 16px; }
+
+    </style>
+</head>
+<body>
+    <h1>Ad Management</h1>
+    <div>
+        <button onclick="addNew()">Add</button>
+        <button onclick="toggleQuery()">Query</button>
+        <button onclick="queryGo()" id="queryGo" style="display:none;">Query Go</button>
+        <button onclick="deleteSelected()">Delete</button>
+    </div>
+        <div class="list">
+            <table id="adTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>City</th>
+                        <th>Category</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody id="adBody">
+                    {% for ad in ads %}
+                    <tr>
+                        <td><input type="checkbox" class="rowSelect" value="{{ ad.id }}"></td>
+                        <td>{{ ad.id }}</td>
+                        <td class="drilldown" onclick="loadDetail({{ ad.id }})">{{ ad.title }}</td>
+                        <td>{{ ad.city }}</td>
+                        <td>{{ ad.category }}</td>
+                        <td>{{ ad.phone }}</td>
+                        <td>{{ ad.status }}</td>
+                        <td>{{ ad.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="detail">
+            <form id="adForm" method="post" action="/api/admin/ad/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <label>Title: <input type="text" name="title" id="title" required></label>
+                    <label>Description: <textarea name="description" id="description" required></textarea></label>
+                    <label>Location: <input type="text" name="location" id="location" required></label>
+                    <label>City: <input type="text" name="city" id="city" required></label>
+                    <label>Category: <input type="text" name="category" id="category" required></label>
+                    <label>Phone: <input type="text" name="phone" id="phone" required></label>
+                    <label>WhatsApp: <input type="text" name="whatsapp" id="whatsapp"></label>
+                    <label>Status: <select name="status" id="status">
+                        <option value="PENDING">PENDING</option>
+                        <option value="LIVE">LIVE</option>
+                        <option value="REVIEW">REVIEW</option>
+                        <option value="BLOCKED">BLOCKED</option>
+                    </select></label>
+                    <label>Images: <input type="file" name="images" id="images" multiple></label>
+                </div>
+                <br><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let isQueryMode = false;
+
+        document.getElementById('selectAll').addEventListener('change', function() {
+            const checks = document.querySelectorAll('.rowSelect');
+            checks.forEach(c => c.checked = this.checked);
+        });
+
+        function toggleQuery() {
+            isQueryMode = !isQueryMode;
+            const tbody = document.getElementById('adBody');
+            if (isQueryMode) {
+                tbody.innerHTML = `
+                    <tr class="query-row">
+                        <td></td>
+                        <td><input type="text" id="q_id"></td>
+                        <td><input type="text" id="q_title"></td>
+                        <td><input type="text" id="q_city"></td>
+                        <td><input type="text" id="q_category"></td>
+                        <td><input type="text" id="q_phone"></td>
+                        <td><select id="q_status"><option value="">All</option><option value="PENDING">PENDING</option><option value="LIVE">LIVE</option><option value="REVIEW">REVIEW</option><option value="BLOCKED">BLOCKED</option></select></td>
+                        <td></td>
+                    </tr>
+                `;
+                document.getElementById('queryGo').style.display = 'inline';
+            } else {
+                location.reload(); // Reload to show data
+            }
+        }
+
+        function queryGo() {
+            const params = new URLSearchParams();
+            const q_id = document.getElementById('q_id').value.trim();
+            const q_title = document.getElementById('q_title').value.trim();
+            const q_city = document.getElementById('q_city').value.trim();
+            const q_category = document.getElementById('q_category').value.trim();
+            const q_phone = document.getElementById('q_phone').value.trim();
+            const q_status = document.getElementById('q_status').value.trim();
+            if (q_id) params.append('id', q_id);
+            if (q_title) params.append('title', q_title);
+            if (q_city) params.append('city', q_city);
+            if (q_category) params.append('category', q_category);
+            if (q_phone) params.append('phone', q_phone);
+            if (q_status) params.append('status', q_status);
+            window.location.href = `/api/admin/ad/?${params}`;
+        }
+
+        function addNew() {
+            // Open empty detail in full screen
+            fetch('/api/admin/ad/new/')
+                .then(response => response.text())
+                .then(html => {
+                    const newWindow = window.open('', '_blank');
+                    newWindow.document.write(html);
+                    newWindow.document.close();
+                });
+        }
+
+        function deleteSelected() {
+            const selected = Array.from(document.querySelectorAll('.rowSelect:checked')).map(c => c.value);
+            if (selected.length && confirm('Delete selected?')) {
+                fetch('/api/admin/ad/delete/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value },
+                    body: JSON.stringify({ ids: selected })
+                }).then(() => location.reload());
+            }
+        }
+
+        function loadDetail(id) {
+            // Open in same tab
+            window.location.href = `/api/admin/ad/${id}/`;
+        }
+    </script>
+</body>
+</html>

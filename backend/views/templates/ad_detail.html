@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ad Detail</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea, select { width: 100%; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Ad Detail</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-grid">
+            <label>Title: <input type="text" name="title" value="{{ ad.title }}" required></label>
+            <label>Description: <textarea name="description" required>{{ ad.description }}</textarea></label>
+            <label>Location: <input type="text" name="location" value="{{ ad.location }}" required></label>
+            <label>City: <input type="text" name="city" value="{{ ad.city }}" required></label>
+            <label>Category: <input type="text" name="category" value="{{ ad.category }}" required></label>
+            <label>Phone: <input type="text" name="phone" value="{{ ad.phone }}" required></label>
+            <label>WhatsApp: <input type="text" name="whatsapp" value="{{ ad.whatsapp }}"></label>
+            <label>Status: <select name="status">
+                <option value="PENDING" {% if ad.status == 'PENDING' %}selected{% endif %}>PENDING</option>
+                <option value="LIVE" {% if ad.status == 'LIVE' %}selected{% endif %}>LIVE</option>
+                <option value="REVIEW" {% if ad.status == 'REVIEW' %}selected{% endif %}>REVIEW</option>
+                <option value="BLOCKED" {% if ad.status == 'BLOCKED' %}selected{% endif %}>BLOCKED</option>
+            </select></label>
+            <label>Images: <input type="file" name="images" multiple></label>
+        </div>
+        <br><br>
+        <button type="submit">Save</button>
+        <a href="/api/admin/ad/">Back to List</a>
+    </form>
+    {% if ad %}
+    <h2>Current Images</h2>
+    {% for img in ad.images %}
+    <img src="{{ img }}" width="100" height="100" style="margin: 5px;">
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

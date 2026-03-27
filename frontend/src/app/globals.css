@@ -1,0 +1,402 @@
+@import "tailwindcss";
+
+/* Newspaper Classifieds Style - Yellow, Black, Grays only */
+
+:root {
+  /* Newspaper palette */
+  --paper-bg: #F5F5DC;           /* Cream/off-white paper color */
+  --paper-dark: #E8E8D0;         /* Slightly darker paper for sections */
+  --ink-black: #1a1a1a;          /* Soft black for text */
+  --ink-gray: #4a4a4a;           /* Dark gray for secondary text */
+  --ink-light: #6b6b6b;          /* Light gray for hints */
+  --accent-yellow: #FDE68A;      /* Eye-friendly warm yellow */
+  --accent-yellow-dark: #FCD34D; /* Stronger yellow for hover states */
+  --border-gray: #2a2a2a;        /* Near-black for lines */
+  --border-light: #c0c0c0;       /* Light gray lines */
+}
+
+/* Base newspaper style */
+body {
+  background-color: var(--paper-bg);
+  color: var(--ink-black);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Newspaper typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  color: var(--ink-black);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; margin: 1rem 0 0.5rem; }
+h3 { font-size: 1.125rem; }
+
+p {
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+/* Container - full width like newspaper */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header - simple newspaper masthead style */
+.header {
+  background-color: var(--ink-black);
+  color: var(--paper-bg);
+  padding: 1rem 0;
+  border-bottom: 4px solid var(--accent-yellow);
+}
+
+.header h1, .header h2 {
+  color: var(--paper-bg);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Multi-column classifieds layout */
+.classifieds-columns {
+  column-count: 1;
+  column-gap: 2rem;
+  column-rule: 1px solid var(--border-light);
+  /* Prevent overflow */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .classifieds-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .classifieds-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1400px) {
+  .classifieds-columns {
+    column-count: 4;
+  }
+}
+
+/* Individual ad - newspaper style */
+.classified-ad {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.5px solid var(--border-light);
+  page-break-inside: avoid;
+  /* Handle long words */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.classified-ad:last-child {
+  border-bottom: none;
+}
+
+/* Ad title - bold and prominent with highlight */
+.ad-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink-black);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  /* Highlight background */
+  background-color: var(--accent-yellow);
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+  border: 1px solid var(--ink-black);
+  /* Handle long words */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Ad description */
+.ad-description {
+  font-size: 0.95rem;
+  color: var(--ink-gray);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  /* Handle long words */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Ad metadata - location, phone, etc */
+.ad-meta {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  font-style: italic;
+  /* Handle long words */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Category headers - newspaper section style */
+.category-header {
+  background-color: var(--accent-yellow);
+  color: var(--ink-black);
+  padding: 0.75rem 1rem;
+  margin: 2rem 0 1.5rem;
+  border-top: 3px solid var(--ink-black);
+  border-bottom: 3px solid var(--ink-black);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  break-after: avoid;
+}
+
+/* Simple buttons - newspaper style */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-black);
+  background-color: var(--accent-yellow);
+  border: 2px solid var(--ink-black);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: var(--ink-black);
+  color: var(--accent-yellow);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--ink-gray);
+  color: var(--ink-gray);
+}
+
+.btn-secondary:hover {
+  background-color: var(--ink-gray);
+  color: var(--paper-bg);
+}
+
+/* Form inputs - simple newspaper style */
+.input {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 2px solid var(--border-gray);
+  background-color: white;
+  color: var(--ink-black);
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
+}
+
+/* Links - newspaper style */
+a {
+  color: var(--ink-black);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-yellow);
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  color: var(--ink-gray);
+}
+
+/* Navigation - simple newspaper sections */
+.nav-section {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--border-gray);
+  margin-bottom: 1.5rem;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  text-decoration: none;
+  border-right: 1px solid var(--border-light);
+}
+
+.nav-link:last-child {
+  border-right: none;
+}
+
+/* Date/pagination line */
+.rule-line {
+  border: none;
+  border-top: 1px solid var(--border-gray);
+  margin: 1rem 0;
+}
+
+.rule-line-double {
+  border: none;
+  border-top: 3px double var(--border-gray);
+  margin: 1rem 0;
+}
+
+/* Badge - newspaper highlight style */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--accent-yellow);
+  color: var(--ink-black);
+  border: 1px solid var(--ink-black);
+}
+
+/* Phone number - make it stand out */
+.phone-number {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink-black);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-yellow);
+}
+
+/* Dropdown - simple list */
+.select-dropdown {
+  background-color: white;
+  border: 2px solid var(--border-gray);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.select-dropdown li {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.select-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.select-dropdown li:hover {
+  background-color: var(--paper-dark);
+}
+
+/* Language toggle - newspaper style */
+.lang-btn {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--ink-gray);
+  background-color: transparent;
+  color: var(--ink-gray);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background-color: var(--ink-black);
+  color: var(--accent-yellow);
+  border-color: var(--ink-black);
+}
+
+/* Compact section for filters */
+.filter-section {
+  background-color: var(--paper-dark);
+  padding: 1rem;
+  border-top: 2px solid var(--border-gray);
+  border-bottom: 2px solid var(--border-gray);
+  margin-bottom: 1.5rem;
+}
+
+/* Pagination - newspaper footer style */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid var(--border-gray);
+  margin-top: 2rem;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+/* Responsive - maintain readability */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .classifieds-columns {
+    column-count: 1;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--accent-yellow);
+  color: var(--ink-black);
+}
+
+/* Scrollbar - simple */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-gray);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 2px;
+}

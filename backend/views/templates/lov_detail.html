@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOV Detail</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        form { max-width: 600px; }
+        label { display: block; margin-bottom: 10px; }
+        input, select, textarea { width: 100%; padding: 8px; }
+        .copy-mode-banner { background-color: #fff3cd; border: 1px solid #ffc107; padding: 10px; margin-bottom: 20px; border-radius: 4px; }
+        .copy-mode-banner strong { color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>LOV Detail</h1>
+    {% if copy_mode %}
+    <div class="copy-mode-banner">
+        <strong>⚠️ Copy Mode:</strong> You are creating a copy of an existing LOV. Review the data below and click Save to create the new record.
+    </div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {% if copy_mode %}<input type="hidden" name="copy_mode" value="1">{% endif %}
+        <label>Type: <input type="text" name="type" value="{% firstof initial.type lov.type '' %}"></label><br>
+        <label>LIC: <input type="text" name="lic" value="{% firstof initial.lic lov.lic '' %}"></label><br>
+        <label>Display Name: <input type="text" name="display_name" value="{% firstof initial.display_name lov.display_name '' %}"></label><br>
+        <label>Language: <select name="language">
+            <option value="en" {% if initial.language == 'en' %}selected{% elif initial.language|default:'' == '' and lov.language == 'en' %}selected{% endif %}>English</option>
+            <option value="ta" {% if initial.language == 'ta' %}selected{% elif initial.language|default:'' == '' and lov.language == 'ta' %}selected{% endif %}>Tamil</option>
+        </select></label><br>
+        <label>Parent Value: <select name="parent_value">
+            <option value="">---------</option>
+            {% for p_lov in parent_lovs %}
+            <option value="{{ p_lov.id }}" {% if initial.parent_value == p_lov.id|stringformat:'s' %}selected{% elif initial.parent_value|default:'' == '' and lov.parent_value_id == p_lov.id %}selected{% endif %}>{{ p_lov.type }}: {{ p_lov.display_name }}</option>
+            {% endfor %}
+        </select></label><br>
+        <label>Order: <input type="number" name="order" value="{% firstof initial.order lov.order 0 %}"></label><br>
+        <label>Description: <textarea name="description">{% firstof initial.description lov.description '' %}</textarea></label><br>
+        <label style="display: inline;">Is Active <input type="checkbox" name="is_active" {% if initial.is_active == 'on' %}checked{% elif initial.is_active|default:'' == '' and lov.is_active %}checked{% endif %} style="margin-left: 5px;"></label><br>
+        <br><br>
+        <button type="submit">Save</button>
+        <a href="/employee/lov/">Back to List</a>
+    </form>
+</body>
+</html>

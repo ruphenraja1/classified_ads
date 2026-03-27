@@ -1,0 +1,3768 @@
+[
+{
+    "model": "ads.lov",
+    "pk": 1,
+    "fields": {
+        "type": "UI_CONTROL",
+        "lic": "ENABLE_IMAGE_UPLOAD",
+        "display_name": "Enable Image Upload",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 2,
+    "fields": {
+        "type": "LABEL",
+        "lic": "HOME_TITLE",
+        "display_name": "Daily Classifieds",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 3,
+    "fields": {
+        "type": "LABEL",
+        "lic": "HOME_TITLE",
+        "display_name": "தினசரி விளம்பரங்கள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 4,
+    "fields": {
+        "type": "LABEL",
+        "lic": "POST_TITLE",
+        "display_name": "Post a Classified Ad",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 5,
+    "fields": {
+        "type": "LABEL",
+        "lic": "POST_TITLE",
+        "display_name": "விளம்பரம் இடு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 6,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "JOBS",
+        "display_name": "Jobs",
+        "language": "en",
+        "parent_value": null,
+        "description": "5",
+        "is_active": true,
+        "order": 5
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 7,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "JOBS",
+        "display_name": "வேலைகள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "5",
+        "is_active": true,
+        "order": 5
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 8,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "PROPERTIES_REALESTATE",
+        "display_name": "Properties & Real Estate",
+        "language": "en",
+        "parent_value": null,
+        "description": "3",
+        "is_active": true,
+        "order": 3
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 9,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "PROPERTIES_REALESTATE",
+        "display_name": "சொத்து",
+        "language": "ta",
+        "parent_value": null,
+        "description": "3",
+        "is_active": true,
+        "order": 3
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 10,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "VEHICLES",
+        "display_name": "Vehicles",
+        "language": "en",
+        "parent_value": null,
+        "description": "2",
+        "is_active": true,
+        "order": 2
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 11,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "VEHICLES",
+        "display_name": "வாகனங்கள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "2",
+        "is_active": true,
+        "order": 2
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 12,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "SERVICES",
+        "display_name": "Services",
+        "language": "en",
+        "parent_value": null,
+        "description": "6",
+        "is_active": true,
+        "order": 6
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 13,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "SERVICES",
+        "display_name": "சேவைகள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "6",
+        "is_active": true,
+        "order": 6
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 14,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "MATRIMONIAL",
+        "display_name": "Matrimonial",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 15,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "MATRIMONIAL",
+        "display_name": "திருமணம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 16,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "BUYSELL",
+        "display_name": "Buy/Sell",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 17,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "MOBILES_ELECTRONICS",
+        "display_name": "கைபேசி & மின்னணு பொருட்கள் ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "4",
+        "is_active": true,
+        "order": 4
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 28,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_NEWEST",
+        "display_name": "Newest First",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 29,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_NEWEST",
+        "display_name": "புதிய முதலில்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 30,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_PRICE_LOW",
+        "display_name": "Price Low to High",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 31,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_PRICE_LOW",
+        "display_name": "விலை குறைவு முதல் அதிகம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 32,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_PRICE_HIGH",
+        "display_name": "Price High to Low",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 33,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SORT_PRICE_HIGH",
+        "display_name": "விலை அதிகம் முதல் குறைவு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 34,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PAGINATION_PREV",
+        "display_name": "Previous",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 35,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PAGINATION_PREV",
+        "display_name": "முந்தைய",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 36,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PAGINATION_NEXT",
+        "display_name": "Next",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 37,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PAGINATION_NEXT",
+        "display_name": "அடுத்து",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 38,
+    "fields": {
+        "type": "LABEL",
+        "lic": "POST_BUTTON",
+        "display_name": "Post Ad",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 39,
+    "fields": {
+        "type": "LABEL",
+        "lic": "POST_BUTTON",
+        "display_name": "விளம்பரம் இடு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 40,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PHONE_LABEL",
+        "display_name": "Phone (+91XXXXXXXXXX)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 41,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PHONE_LABEL",
+        "display_name": "தொலைபேசி (+91XXXXXXXXXX)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 42,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SEND_OTP",
+        "display_name": "Send OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 43,
+    "fields": {
+        "type": "LABEL",
+        "lic": "SEND_OTP",
+        "display_name": "OTP அனுப்பு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 44,
+    "fields": {
+        "type": "LABEL",
+        "lic": "VERIFY_OTP",
+        "display_name": "Verify OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 45,
+    "fields": {
+        "type": "LABEL",
+        "lic": "VERIFY_OTP",
+        "display_name": "OTP சரிபார்க்க",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 46,
+    "fields": {
+        "type": "LABEL",
+        "lic": "TITLE_EN",
+        "display_name": "Title (English)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 47,
+    "fields": {
+        "type": "LABEL",
+        "lic": "TITLE_TA",
+        "display_name": "Title (Tamil)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 48,
+    "fields": {
+        "type": "LABEL",
+        "lic": "DESC_EN",
+        "display_name": "Description (English)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 49,
+    "fields": {
+        "type": "LABEL",
+        "lic": "DESC_TA",
+        "display_name": "Description (Tamil)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 50,
+    "fields": {
+        "type": "LABEL",
+        "lic": "LOCATION_EN",
+        "display_name": "Location (English)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 51,
+    "fields": {
+        "type": "LABEL",
+        "lic": "LOCATION_TA",
+        "display_name": "Location (Tamil)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 52,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PRICE_LABEL",
+        "display_name": "Price (optional)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 53,
+    "fields": {
+        "type": "LABEL",
+        "lic": "CITY_LABEL",
+        "display_name": "City",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 54,
+    "fields": {
+        "type": "LABEL",
+        "lic": "CATEGORY_LABEL",
+        "display_name": "Category",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 55,
+    "fields": {
+        "type": "LABEL",
+        "lic": "WHATSAPP_LABEL",
+        "display_name": "WhatsApp (optional)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 56,
+    "fields": {
+        "type": "LABEL",
+        "lic": "IMAGES_LABEL",
+        "display_name": "Images (up to 5)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 57,
+    "fields": {
+        "type": "LABEL",
+        "lic": "MORE_ADS",
+        "display_name": "More Ads from this Poster",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 58,
+    "fields": {
+        "type": "LABEL",
+        "lic": "TITLE_LABEL",
+        "display_name": "Title",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 59,
+    "fields": {
+        "type": "LABEL",
+        "lic": "DESC_LABEL",
+        "display_name": "Description",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 60,
+    "fields": {
+        "type": "LABEL",
+        "lic": "LOCATION_LABEL",
+        "display_name": "Location",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 61,
+    "fields": {
+        "type": "LABEL",
+        "lic": "VERIFY_OTP_LABEL",
+        "display_name": "OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 62,
+    "fields": {
+        "type": "LABEL",
+        "lic": "TITLE_LABEL",
+        "display_name": "தலைப்பு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 63,
+    "fields": {
+        "type": "LABEL",
+        "lic": "DESC_LABEL",
+        "display_name": "விளக்கம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 64,
+    "fields": {
+        "type": "LABEL",
+        "lic": "LOCATION_LABEL",
+        "display_name": "இடம் (Location)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 65,
+    "fields": {
+        "type": "LABEL",
+        "lic": "PRICE_LABEL",
+        "display_name": "விலை (விருப்பமானது)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 66,
+    "fields": {
+        "type": "LABEL",
+        "lic": "CITY_LABEL",
+        "display_name": "நகரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 67,
+    "fields": {
+        "type": "LABEL",
+        "lic": "CATEGORY_LABEL",
+        "display_name": "வகை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 68,
+    "fields": {
+        "type": "LABEL",
+        "lic": "VERIFY_OTP_LABEL",
+        "display_name": "OTP",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 69,
+    "fields": {
+        "type": "LABEL",
+        "lic": "WHATSAPP_LABEL",
+        "display_name": "WhatsApp (விருப்பமானது)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 70,
+    "fields": {
+        "type": "LABEL",
+        "lic": "IMAGES_LABEL",
+        "display_name": "படங்கள் (அதிகபட்சம் 5)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 71,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "TITLE_LABEL",
+        "display_name": "Title",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 72,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "DESC_LABEL",
+        "display_name": "Description",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 73,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "PRICE_LABEL",
+        "display_name": "Price (optional)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 74,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "LOCATION_LABEL",
+        "display_name": "Location\\Address",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 75,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "CITY_LABEL",
+        "display_name": "City",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 76,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "CATEGORY_LABEL",
+        "display_name": "Category",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 77,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "PHONE_LABEL",
+        "display_name": "Phone (+91XXXXXXXXXX)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 78,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "SEND_OTP",
+        "display_name": "Send OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 79,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "VERIFY_OTP_LABEL",
+        "display_name": "OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 80,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "VERIFY_OTP",
+        "display_name": "Verify OTP",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 81,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "IMAGES_LABEL",
+        "display_name": "Images (up to 5)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 82,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "WHATSAPP_LABEL",
+        "display_name": "WhatsApp (optional)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 83,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "POST_BUTTON",
+        "display_name": "Post Ad",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 84,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "TITLE_LABEL",
+        "display_name": "தலைப்பு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 85,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "DESC_LABEL",
+        "display_name": "விவரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 86,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "PRICE_LABEL",
+        "display_name": "விலை (விருப்பமானது)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 87,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "LOCATION_LABEL",
+        "display_name": "இடம்\\முகவரி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 88,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "CITY_LABEL",
+        "display_name": "நகரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 89,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "CATEGORY_LABEL",
+        "display_name": "வகை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 90,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "PHONE_LABEL",
+        "display_name": "தொலைபேசி (+91XXXXXXXXXX)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 91,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "SEND_OTP",
+        "display_name": "OTP அனுப்பு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 92,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "VERIFY_OTP_LABEL",
+        "display_name": "OTP",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 93,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "VERIFY_OTP",
+        "display_name": "OTP சரிபார்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 94,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "IMAGES_LABEL",
+        "display_name": "படங்கள் (அதிகபட்சம் 5)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 95,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "WHATSAPP_LABEL",
+        "display_name": "WhatsApp (விருப்பமானது)",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 96,
+    "fields": {
+        "type": "UI_LABEL",
+        "lic": "POST_BUTTON",
+        "display_name": "விளம்பரம் இடு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 98,
+    "fields": {
+        "type": "TEST",
+        "lic": "TEST",
+        "display_name": "TEST",
+        "language": "en",
+        "parent_value": null,
+        "description": "TEST",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 100,
+    "fields": {
+        "type": "TEST1",
+        "lic": "TEST1",
+        "display_name": "TEST1",
+        "language": "en",
+        "parent_value": null,
+        "description": "TEST1",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 101,
+    "fields": {
+        "type": "STATUS",
+        "lic": "PENDING",
+        "display_name": "PENDING",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 102,
+    "fields": {
+        "type": "STATUS",
+        "lic": "PENDING",
+        "display_name": "PENDING",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 103,
+    "fields": {
+        "type": "STATUS",
+        "lic": "LIVE",
+        "display_name": "LIVE",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 104,
+    "fields": {
+        "type": "STATUS",
+        "lic": "LIVE",
+        "display_name": "LIVE",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 105,
+    "fields": {
+        "type": "BLOCKED_USER_STATUS",
+        "lic": "BLOCKED",
+        "display_name": "BLOCKED",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 106,
+    "fields": {
+        "type": "BLOCKED_USER_STATUS",
+        "lic": "UNBLOCKED",
+        "display_name": "UNBLOCKED",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 107,
+    "fields": {
+        "type": "STATUS",
+        "lic": "REVIEW",
+        "display_name": "REVIEW",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 108,
+    "fields": {
+        "type": "STATUS",
+        "lic": "REVIEW",
+        "display_name": "REVIEW",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 109,
+    "fields": {
+        "type": "ENABLE_POST_AD_DEV",
+        "lic": "Y",
+        "display_name": "Y",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 110,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "SEXUAL_ABUSE",
+        "display_name": "Sexual Abuse Words",
+        "language": "ta",
+        "parent_value": null,
+        "description": "கூதி,கூத்தி,கோத்தி,புண்டை,புண்ட,பூல்,பூலு,பூலா,சூத்து,சுன்ணி,சுன்னி,குண்டி,மயிர்,மயிறு,ஓத்தா,ஓது,ஓத்து,ஓம்பு,ஓம்பி,ஓக்கு,ஓலு,தேவிடியா,தேவதியா,தாயோளி,தாயோழி,koodi,koodhi,koothi,kootthi,kuthi,pundai,punda,pundaa,soothu,sooth,poolu,poola,pulu,sunni,chunni,sunnee,kundi,gundi,mayir,mairu,myru,otha,othe,ootha,othada,othala,oombu,oombi,ombu,oompu,okku,okka,thevidiya,thevudiya,thevadiya,devidiya,thayoli,thayolii,taayoli,thaayoli,pundanaaye,pundamayir,pundaimayir,koothimayir,koodhimayir,ommalaokka,fuck,fucking,fucked,fucker,fuckwit,fuckface,fuckoff,fuckyou,motherfucker,shit,shitty,shithead,cunt,pussy,bitch,dick,dickhead,cock,cocksucker,asshole,arsehole,whore,slut,rape,rapist,cum,jizz,blowjob,handjob,boobs,sexdoll\r\n",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 111,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "HATE_SPEECH",
+        "display_name": "Hate Speech Words",
+        "language": "ta",
+        "parent_value": null,
+        "description": "பறையர்,பறைய,பறை,சாக்கிலியர்,சாக்கிலி,சக்கிலி,பள்ளர்,பள்ளன்,அருந்ததியர்,சண்டாளர்,சண்டாள,பகடைக்குபிறந்தவன்,paraiyar,parayar,parayan,sakkiliyar,sakiliyar,sakkili,pallar,pallan,arunthathiyar,chandalar,nigger,nigga,coon,chink,gook,kike,spic,paki,faggot,dyke,tranny\r\n",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 112,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "HARASSMENT",
+        "display_name": "Harassment Words",
+        "language": "ta",
+        "parent_value": null,
+        "description": "முட்டாள்,கழுதை,மரமண்டை,மரமண்டி,கிருக்கு,கிருக்கன்,லூசு,பைத்தியம்,பைத்தியக்காரன்,கூமுட்டை,மொண்டை,எருமை,பன்றி,சோரிதின்னாதவன்,கருமம்,சோறிநாய்,ஊமை,mottaal,kazhuda,maramanda,kirukku,loosu,paithiyam,idiot,moron,dumb,dumbass,stupid,fool,jackass,jerk,loser,pathetic,worthless,scum,creep,weirdo,psycho,crazy,lunatic,douche,douchebag,knobhead,prick,dipshit,git,tosser,numpty,muppet,fucktard,braindead,thickhead,airhead,meathead,knucklehead,dimwit,nitwit,dunce\r\n",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 113,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "SEXUAL_ABUSE",
+        "display_name": "Sexual Abuse Words EN",
+        "language": "en",
+        "parent_value": null,
+        "description": "fuck,fucking,fucked,fk,f u c k,shit,shitty,sh*t,cunt,ct,c u n t,pussy,psy,p u s s y,bitch,bih,b i t c h,motherfucker,mother fucker,m**herfucker,dick,dickhead,cocksucker,cock sucker,cock,prick,asshole,arsehole,ass hole,wanker,twat,slag,whore,slut,slt,ho,hoe,skank,sknk,tramp,nympho,rape,rapist,rapey,gangbang,gang bang,cum,jizz,spunk,blowjob,blow job,handjob,tit,tits,boob,boobs,fuck off,fuck you,go fuck yourself,eat shit,suck my dick,suck it,fuckface,shithead,bastard,son of a bitch,sonofa bitch,faggot,retard,dumb cunt,stupid bitch,dirty whore,filthy slut,cheap whore,pussy ass,dick rider,cock tease,cock block,pussy whipped,bitch ass,fuck boy,fuck girl,rape bait,rape meat,cum dumpster,cum rag,cum slut,fuck toy,sex doll,thot,th*t,thotiana\r\n",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 114,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "HATE_SPEECH",
+        "display_name": "Hate Speech Words EN",
+        "language": "en",
+        "parent_value": null,
+        "description": "nigger,nigga,coon,chink,gook,jap,kike,spic,beaner,wetback,raghead,paki,towelhead,sandnigger,faggot,fag,dyke,tranny,shemale,retard,cunt,bitch",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 115,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "HARASSMENT",
+        "display_name": "Harassment Words EN",
+        "language": "en",
+        "parent_value": null,
+        "description": "asshole,arsehole,asshole,idiot,idiotic,moron,dumbass,dumbass,stupid,retard,retd,imbecile,fool,jackass,jerk,dickhead,prick,bastard,sonofabitch,sonofabitch,motherfucker,motherfucker,bitch,bih,fucker,fuckwit,twat,wanker,knobhead,bellend,dipshit,shithead,douchebag,douche,tool,loser,pathetic,worthless,scum,scumbag,lowlife,creep,weirdo,freak,nutcase,psycho,crazy,lunatic,nutjob,dick,cocksucker,pussy,cunt(whenusedasinsult),fuckface,shitstain,knob,git,pillock,prat,tosser,numpty,muppet,berk,plonker,gitface,knobjockey,bellend,fucktard,fuckwit,shitforbrains,braindead,thickhead,thicko,peabrain,airhead,bubblehead,meathead,bonehead,knucklehead,blockhead,chucklehead,lamebrain,birdbrain,halfwit,dimwit,nitwit,simpleton,dunce",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 117,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "VIOLENCE",
+        "display_name": "VIOLENCE",
+        "language": "en",
+        "parent_value": null,
+        "description": "lets attack,go attack,attack them,attack him,attack her,attack someone,kill him,kill her,kill them,murder him,murder her,murder them,beat him,beat her,beat them,shoot him,shoot her,shoot them,stab him,stab her,stab them,lynch him,lynch her,lynch them,bomb them,blow them up,set fire to him,set fire to her,set fire to them",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 118,
+    "fields": {
+        "type": "BLOCKLIST",
+        "lic": "VIOLENCE_REGEX",
+        "display_name": "VIOLENCE_REGEX",
+        "language": "en",
+        "parent_value": null,
+        "description": "attack\\s+\\w+,kill\\s+\\w+,murder\\s+\\w+,beat\\s+\\w+,stab\\s+\\w+,shoot\\s+\\w+,lynch\\s+\\w+,burn\\s+\\w+,bomb\\s+\\w+",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 120,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "COMMERCIAL_INDUSTRIAL",
+        "display_name": "தொழில் & வணிகம் ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "1",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 121,
+    "fields": {
+        "type": "UI_CONTROL",
+        "lic": "ENABLE_IMAGE_UPLOAD_copy",
+        "display_name": "Enable Image Upload (Copy)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 122,
+    "fields": {
+        "type": "UI_CONTROL",
+        "lic": "ENABLE_IMAGE_UPLOAD_copy_20260122120706",
+        "display_name": "Enable Image Upload (Copy 20260122120706)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 123,
+    "fields": {
+        "type": "UI_CONTROL",
+        "lic": "ENABLE_IMAGE_UPLOAD_copy_20260122120710",
+        "display_name": "Enable Image Upload (Copy 20260122120710)",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 124,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "BUSINESS",
+        "display_name": "Business",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 128,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "MOBILES_ELECTRONICS",
+        "display_name": "Mobiles & Electronics",
+        "language": "en",
+        "parent_value": null,
+        "description": "4",
+        "is_active": true,
+        "order": 4
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 129,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "FURNITURE HOUSEHOLD ITEMS",
+        "display_name": "Furniture & Household Items",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": false,
+        "order": 0
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 130,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "EDUCATION_TRAINING",
+        "display_name": "Education & Training",
+        "language": "en",
+        "parent_value": null,
+        "description": "9",
+        "is_active": true,
+        "order": 9
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 131,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "HOME_APPLIANCES_KITCHEN",
+        "display_name": "Home Appliances & Kitchen",
+        "language": "en",
+        "parent_value": null,
+        "description": "8",
+        "is_active": true,
+        "order": 8
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 132,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "FASHION_BEAUTY",
+        "display_name": "Fashion & Beauty",
+        "language": "en",
+        "parent_value": null,
+        "description": "7",
+        "is_active": true,
+        "order": 7
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 133,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "PETS_PETCARE",
+        "display_name": "Pets & Pet Care",
+        "language": "en",
+        "parent_value": null,
+        "description": "11",
+        "is_active": true,
+        "order": 11
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 134,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "SPORTS_HOBBIES",
+        "display_name": "Sports & Hobbies",
+        "language": "en",
+        "parent_value": null,
+        "description": "10",
+        "is_active": true,
+        "order": 10
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 135,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "BOOKS",
+        "display_name": "Books",
+        "language": "en",
+        "parent_value": null,
+        "description": "12",
+        "is_active": true,
+        "order": 12
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 136,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "COMMERCIAL_INDUSTRIAL",
+        "display_name": "Commercial & Industrial",
+        "language": "en",
+        "parent_value": null,
+        "description": "1",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 137,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "COMMUNITY_EVENTS",
+        "display_name": "Community & Events",
+        "language": "en",
+        "parent_value": null,
+        "description": "13",
+        "is_active": true,
+        "order": 13
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 139,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "FASHION_BEAUTY",
+        "display_name": "ஆடை & அழகுசாதன பொருட்கள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "7",
+        "is_active": true,
+        "order": 7
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 140,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "HOME_APPLIANCES_KITCHEN",
+        "display_name": "வீடு & சமயலறை பொருட்கள் ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "8",
+        "is_active": true,
+        "order": 8
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 141,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "EDUCATION_TRAINING",
+        "display_name": "கல்வி & பயிற்சிகள் ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "9",
+        "is_active": true,
+        "order": 9
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 142,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "SPORTS_HOBBIES",
+        "display_name": "விளையாட்டு & பொழுது போக்கு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "10",
+        "is_active": true,
+        "order": 10
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 143,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "PETS_PETCARE",
+        "display_name": "செல்ல பிரணிகள் & பராமரிப்பு ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "11",
+        "is_active": true,
+        "order": 11
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 144,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "BOOKS",
+        "display_name": "புத்தகங்கள்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "12",
+        "is_active": true,
+        "order": 12
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 145,
+    "fields": {
+        "type": "CATEGORY",
+        "lic": "COMMUNITY_EVENTS",
+        "display_name": "சமுதாய கூட்டங்கள் & விழாக்கள் ",
+        "language": "ta",
+        "parent_value": null,
+        "description": "13",
+        "is_active": true,
+        "order": 13
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 146,
+    "fields": {
+        "type": "CITY",
+        "lic": "CHENNAI",
+        "display_name": "சென்னை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "1",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 147,
+    "fields": {
+        "type": "CITY",
+        "lic": "COIMBATORE",
+        "display_name": "கோயம்புத்தூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "2",
+        "is_active": true,
+        "order": 2
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 148,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUPPUR",
+        "display_name": "திருப்பூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "3",
+        "is_active": true,
+        "order": 3
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 149,
+    "fields": {
+        "type": "CITY",
+        "lic": "MADURAI",
+        "display_name": "மதுரை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "4",
+        "is_active": true,
+        "order": 4
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 150,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUCHIRAPPALLI",
+        "display_name": "திருச்சிராப்பள்ளி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "5",
+        "is_active": true,
+        "order": 5
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 151,
+    "fields": {
+        "type": "CITY",
+        "lic": "KANCHIPURAM",
+        "display_name": "காஞ்சிபுரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "6",
+        "is_active": true,
+        "order": 6
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 152,
+    "fields": {
+        "type": "CITY",
+        "lic": "SALEM",
+        "display_name": "சேலம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "7",
+        "is_active": true,
+        "order": 7
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 153,
+    "fields": {
+        "type": "CITY",
+        "lic": "ERODE",
+        "display_name": "ஈரோடு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "8",
+        "is_active": true,
+        "order": 8
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 154,
+    "fields": {
+        "type": "CITY",
+        "lic": "VELLORE",
+        "display_name": "வேலூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "9",
+        "is_active": true,
+        "order": 9
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 155,
+    "fields": {
+        "type": "CITY",
+        "lic": "THOOTHUKUDI",
+        "display_name": "தூத்துக்குடி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "10",
+        "is_active": true,
+        "order": 10
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 156,
+    "fields": {
+        "type": "CITY",
+        "lic": "KANYAKUMARI",
+        "display_name": "கன்னியாகுமரி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "11",
+        "is_active": true,
+        "order": 11
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 157,
+    "fields": {
+        "type": "CITY",
+        "lic": "CHENGALPATTU",
+        "display_name": "செங்கல்பட்டு",
+        "language": "ta",
+        "parent_value": null,
+        "description": "12",
+        "is_active": true,
+        "order": 12
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 158,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUVALLUR",
+        "display_name": "திருவள்ளூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "13",
+        "is_active": true,
+        "order": 13
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 159,
+    "fields": {
+        "type": "CITY",
+        "lic": "VIRUDHUNAGAR",
+        "display_name": "விருதுநகர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "14",
+        "is_active": true,
+        "order": 14
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 160,
+    "fields": {
+        "type": "CITY",
+        "lic": "KARUR",
+        "display_name": "கரூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "15",
+        "is_active": true,
+        "order": 15
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 161,
+    "fields": {
+        "type": "CITY",
+        "lic": "NAMAKKAL",
+        "display_name": "நாமக்கல்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "16",
+        "is_active": true,
+        "order": 16
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 162,
+    "fields": {
+        "type": "CITY",
+        "lic": "KRISHNAGIRI",
+        "display_name": "கிருஷ்ணகிரி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "17",
+        "is_active": true,
+        "order": 17
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 163,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUNELVELI",
+        "display_name": "திருநெல்வேலி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "18",
+        "is_active": true,
+        "order": 18
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 164,
+    "fields": {
+        "type": "CITY",
+        "lic": "THE_NILGIRIS",
+        "display_name": "நீலகிரி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "19",
+        "is_active": true,
+        "order": 19
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 165,
+    "fields": {
+        "type": "CITY",
+        "lic": "THANJAVUR",
+        "display_name": "தஞ்சாவூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "20",
+        "is_active": true,
+        "order": 20
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 166,
+    "fields": {
+        "type": "CITY",
+        "lic": "DINDIGUL",
+        "display_name": "திண்டுக்கல்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "21",
+        "is_active": true,
+        "order": 21
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 167,
+    "fields": {
+        "type": "CITY",
+        "lic": "VILLUPURAM",
+        "display_name": "விழுப்புரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "22",
+        "is_active": true,
+        "order": 22
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 168,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUVANNAMALAI",
+        "display_name": "திருவண்ணாமலை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "23",
+        "is_active": true,
+        "order": 23
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 169,
+    "fields": {
+        "type": "CITY",
+        "lic": "RANIPET",
+        "display_name": "இராணிப்பேட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "24",
+        "is_active": true,
+        "order": 24
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 170,
+    "fields": {
+        "type": "CITY",
+        "lic": "CUDDALORE",
+        "display_name": "கடலூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "25",
+        "is_active": true,
+        "order": 25
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 171,
+    "fields": {
+        "type": "CITY",
+        "lic": "NAGAPATTINAM",
+        "display_name": "நாகப்பட்டினம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "26",
+        "is_active": true,
+        "order": 26
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 172,
+    "fields": {
+        "type": "CITY",
+        "lic": "THENI",
+        "display_name": "தேனி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "27",
+        "is_active": true,
+        "order": 27
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 173,
+    "fields": {
+        "type": "CITY",
+        "lic": "DHARMAPURI",
+        "display_name": "தருமபுரி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "28",
+        "is_active": true,
+        "order": 28
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 174,
+    "fields": {
+        "type": "CITY",
+        "lic": "PUDUKKOTTAI",
+        "display_name": "புதுக்கோட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "29",
+        "is_active": true,
+        "order": 29
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 175,
+    "fields": {
+        "type": "CITY",
+        "lic": "RAMANATHAPURAM",
+        "display_name": "இராமநாதபுரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "30",
+        "is_active": true,
+        "order": 30
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 176,
+    "fields": {
+        "type": "CITY",
+        "lic": "SIVAGANGA",
+        "display_name": "சிவகங்கை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "31",
+        "is_active": true,
+        "order": 31
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 177,
+    "fields": {
+        "type": "CITY",
+        "lic": "THIRUVARUR",
+        "display_name": "திருவாரூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "32",
+        "is_active": true,
+        "order": 32
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 178,
+    "fields": {
+        "type": "CITY",
+        "lic": "TENKASI",
+        "display_name": "தென்காசி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "33",
+        "is_active": true,
+        "order": 33
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 179,
+    "fields": {
+        "type": "CITY",
+        "lic": "MAYILADUTHURAI",
+        "display_name": "மயிலாடுதுறை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "34",
+        "is_active": true,
+        "order": 34
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 180,
+    "fields": {
+        "type": "CITY",
+        "lic": "KALLAKURICHI",
+        "display_name": "கள்ளக்குறிச்சி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "35",
+        "is_active": true,
+        "order": 35
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 181,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUPATTUR",
+        "display_name": "திருப்பத்தூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "36",
+        "is_active": true,
+        "order": 36
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 182,
+    "fields": {
+        "type": "CITY",
+        "lic": "ARIYALUR",
+        "display_name": "அரியலூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "37",
+        "is_active": true,
+        "order": 37
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 183,
+    "fields": {
+        "type": "CITY",
+        "lic": "PERAMBALUR",
+        "display_name": "பெரம்பலூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "38",
+        "is_active": true,
+        "order": 38
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 184,
+    "fields": {
+        "type": "CITY",
+        "lic": "CHENNAI",
+        "display_name": "Chennai",
+        "language": "en",
+        "parent_value": null,
+        "description": "1",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 185,
+    "fields": {
+        "type": "CITY",
+        "lic": "COIMBATORE",
+        "display_name": "Coimbatore",
+        "language": "en",
+        "parent_value": null,
+        "description": "2",
+        "is_active": true,
+        "order": 2
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 186,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUPPUR",
+        "display_name": "Tiruppur",
+        "language": "en",
+        "parent_value": null,
+        "description": "3",
+        "is_active": true,
+        "order": 3
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 187,
+    "fields": {
+        "type": "CITY",
+        "lic": "MADURAI",
+        "display_name": "Madurai",
+        "language": "en",
+        "parent_value": null,
+        "description": "4",
+        "is_active": true,
+        "order": 4
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 188,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUCHIRAPPALLI",
+        "display_name": "Tiruchirappalli",
+        "language": "en",
+        "parent_value": null,
+        "description": "5",
+        "is_active": true,
+        "order": 5
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 189,
+    "fields": {
+        "type": "CITY",
+        "lic": "KANCHIPURAM",
+        "display_name": "Kanchipuram",
+        "language": "en",
+        "parent_value": null,
+        "description": "6",
+        "is_active": true,
+        "order": 6
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 190,
+    "fields": {
+        "type": "CITY",
+        "lic": "SALEM",
+        "display_name": "Salem",
+        "language": "en",
+        "parent_value": null,
+        "description": "7",
+        "is_active": true,
+        "order": 7
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 191,
+    "fields": {
+        "type": "CITY",
+        "lic": "ERODE",
+        "display_name": "Erode",
+        "language": "en",
+        "parent_value": null,
+        "description": "8",
+        "is_active": true,
+        "order": 8
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 192,
+    "fields": {
+        "type": "CITY",
+        "lic": "VELLORE",
+        "display_name": "Vellore",
+        "language": "en",
+        "parent_value": null,
+        "description": "9",
+        "is_active": true,
+        "order": 9
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 193,
+    "fields": {
+        "type": "CITY",
+        "lic": "THOOTHUKUDI",
+        "display_name": "Thoothukudi",
+        "language": "en",
+        "parent_value": null,
+        "description": "10",
+        "is_active": true,
+        "order": 10
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 194,
+    "fields": {
+        "type": "CITY",
+        "lic": "KANYAKUMARI",
+        "display_name": "Kanyakumari",
+        "language": "en",
+        "parent_value": null,
+        "description": "11",
+        "is_active": true,
+        "order": 11
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 195,
+    "fields": {
+        "type": "CITY",
+        "lic": "CHENGALPATTU",
+        "display_name": "Chengalpattu",
+        "language": "en",
+        "parent_value": null,
+        "description": "12",
+        "is_active": true,
+        "order": 12
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 196,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUVALLUR",
+        "display_name": "Tiruvallur",
+        "language": "en",
+        "parent_value": null,
+        "description": "13",
+        "is_active": true,
+        "order": 13
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 197,
+    "fields": {
+        "type": "CITY",
+        "lic": "VIRUDHUNAGAR",
+        "display_name": "Virudhunagar",
+        "language": "en",
+        "parent_value": null,
+        "description": "14",
+        "is_active": true,
+        "order": 14
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 198,
+    "fields": {
+        "type": "CITY",
+        "lic": "KARUR",
+        "display_name": "Karur",
+        "language": "en",
+        "parent_value": null,
+        "description": "15",
+        "is_active": true,
+        "order": 15
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 199,
+    "fields": {
+        "type": "CITY",
+        "lic": "NAMAKKAL",
+        "display_name": "Namakkal",
+        "language": "en",
+        "parent_value": null,
+        "description": "16",
+        "is_active": true,
+        "order": 16
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 200,
+    "fields": {
+        "type": "CITY",
+        "lic": "KRISHNAGIRI",
+        "display_name": "Krishnagiri",
+        "language": "en",
+        "parent_value": null,
+        "description": "17",
+        "is_active": true,
+        "order": 17
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 201,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUNELVELI",
+        "display_name": "Tirunelveli",
+        "language": "en",
+        "parent_value": null,
+        "description": "18",
+        "is_active": true,
+        "order": 18
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 202,
+    "fields": {
+        "type": "CITY",
+        "lic": "THE_NILGIRIS",
+        "display_name": "The Nilgiris",
+        "language": "en",
+        "parent_value": null,
+        "description": "19",
+        "is_active": true,
+        "order": 19
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 203,
+    "fields": {
+        "type": "CITY",
+        "lic": "THANJAVUR",
+        "display_name": "Thanjavur",
+        "language": "en",
+        "parent_value": null,
+        "description": "20",
+        "is_active": true,
+        "order": 20
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 204,
+    "fields": {
+        "type": "CITY",
+        "lic": "DINDIGUL",
+        "display_name": "Dindigul",
+        "language": "en",
+        "parent_value": null,
+        "description": "21",
+        "is_active": true,
+        "order": 21
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 205,
+    "fields": {
+        "type": "CITY",
+        "lic": "VILLUPURAM",
+        "display_name": "Villupuram",
+        "language": "en",
+        "parent_value": null,
+        "description": "22",
+        "is_active": true,
+        "order": 22
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 206,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUVANNAMALAI",
+        "display_name": "Tiruvannamalai",
+        "language": "en",
+        "parent_value": null,
+        "description": "23",
+        "is_active": true,
+        "order": 23
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 207,
+    "fields": {
+        "type": "CITY",
+        "lic": "RANIPET",
+        "display_name": "Ranipet",
+        "language": "en",
+        "parent_value": null,
+        "description": "24",
+        "is_active": true,
+        "order": 24
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 208,
+    "fields": {
+        "type": "CITY",
+        "lic": "CUDDALORE",
+        "display_name": "Cuddalore",
+        "language": "en",
+        "parent_value": null,
+        "description": "25",
+        "is_active": true,
+        "order": 25
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 209,
+    "fields": {
+        "type": "CITY",
+        "lic": "NAGAPATTINAM",
+        "display_name": "Nagapattinam",
+        "language": "en",
+        "parent_value": null,
+        "description": "26",
+        "is_active": true,
+        "order": 26
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 210,
+    "fields": {
+        "type": "CITY",
+        "lic": "THENI",
+        "display_name": "Theni",
+        "language": "en",
+        "parent_value": null,
+        "description": "27",
+        "is_active": true,
+        "order": 27
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 211,
+    "fields": {
+        "type": "CITY",
+        "lic": "DHARMAPURI",
+        "display_name": "Dharmapuri",
+        "language": "en",
+        "parent_value": null,
+        "description": "28",
+        "is_active": true,
+        "order": 28
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 212,
+    "fields": {
+        "type": "CITY",
+        "lic": "PUDUKKOTTAI",
+        "display_name": "Pudukkottai",
+        "language": "en",
+        "parent_value": null,
+        "description": "29",
+        "is_active": true,
+        "order": 29
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 213,
+    "fields": {
+        "type": "CITY",
+        "lic": "RAMANATHAPURAM",
+        "display_name": "Ramanathapuram",
+        "language": "en",
+        "parent_value": null,
+        "description": "30",
+        "is_active": true,
+        "order": 30
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 214,
+    "fields": {
+        "type": "CITY",
+        "lic": "SIVAGANGA",
+        "display_name": "Sivaganga",
+        "language": "en",
+        "parent_value": null,
+        "description": "31",
+        "is_active": true,
+        "order": 31
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 215,
+    "fields": {
+        "type": "CITY",
+        "lic": "THIRUVARUR",
+        "display_name": "Thiruvarur",
+        "language": "en",
+        "parent_value": null,
+        "description": "32",
+        "is_active": true,
+        "order": 32
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 216,
+    "fields": {
+        "type": "CITY",
+        "lic": "TENKASI",
+        "display_name": "Tenkasi",
+        "language": "en",
+        "parent_value": null,
+        "description": "33",
+        "is_active": true,
+        "order": 33
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 217,
+    "fields": {
+        "type": "CITY",
+        "lic": "MAYILADUTHURAI",
+        "display_name": "Mayiladuthurai",
+        "language": "en",
+        "parent_value": null,
+        "description": "34",
+        "is_active": true,
+        "order": 34
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 218,
+    "fields": {
+        "type": "CITY",
+        "lic": "KALLAKURICHI",
+        "display_name": "Kallakurichi",
+        "language": "en",
+        "parent_value": null,
+        "description": "35",
+        "is_active": true,
+        "order": 35
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 219,
+    "fields": {
+        "type": "CITY",
+        "lic": "TIRUPATTUR",
+        "display_name": "Tirupattur",
+        "language": "en",
+        "parent_value": null,
+        "description": "36",
+        "is_active": true,
+        "order": 36
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 220,
+    "fields": {
+        "type": "CITY",
+        "lic": "ARIYALUR",
+        "display_name": "Ariyalur",
+        "language": "en",
+        "parent_value": null,
+        "description": "37",
+        "is_active": true,
+        "order": 37
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 221,
+    "fields": {
+        "type": "CITY",
+        "lic": "PERAMBALUR",
+        "display_name": "Perambalur",
+        "language": "en",
+        "parent_value": null,
+        "description": "38",
+        "is_active": true,
+        "order": 38
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 222,
+    "fields": {
+        "type": "City",
+        "lic": "IND",
+        "display_name": "Test New City",
+        "language": "en",
+        "parent_value": null,
+        "description": "Test New City",
+        "is_active": true,
+        "order": 99
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 223,
+    "fields": {
+        "type": "City",
+        "lic": "IND",
+        "display_name": "பரிசோதனை நகரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "Test New City",
+        "is_active": true,
+        "order": 99
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 226,
+    "fields": {
+        "type": "CITY",
+        "lic": "POLLACHI",
+        "display_name": "Pollachi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 39
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 227,
+    "fields": {
+        "type": "CITY",
+        "lic": "POLLACHI",
+        "display_name": "பொள்ளாச்சி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 39
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 228,
+    "fields": {
+        "type": "CITY",
+        "lic": "KARAIKUDI",
+        "display_name": "Karaikudi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 41
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 229,
+    "fields": {
+        "type": "CITY",
+        "lic": "KARAIKUDI",
+        "display_name": "காரைக்குடி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 41
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 230,
+    "fields": {
+        "type": "CITY",
+        "lic": "KOVILPATTI",
+        "display_name": "Kovilpatti",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 44
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 231,
+    "fields": {
+        "type": "CITY",
+        "lic": "KOVILPATTI",
+        "display_name": "கோவில்பட்டி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 44
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 232,
+    "fields": {
+        "type": "CITY",
+        "lic": "PALANI",
+        "display_name": "Palani",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 45
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 233,
+    "fields": {
+        "type": "CITY",
+        "lic": "PALANI",
+        "display_name": "பழனி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 45
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 234,
+    "fields": {
+        "type": "CITY",
+        "lic": "UDUMALPET",
+        "display_name": "Udumalpet",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 46
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 235,
+    "fields": {
+        "type": "CITY",
+        "lic": "UDUMALPET",
+        "display_name": "உடுமலைப்பேட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 46
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 236,
+    "fields": {
+        "type": "CITY",
+        "lic": "GOBICHETTIPALAYAM",
+        "display_name": "Gobichettipalayam",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 47
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 237,
+    "fields": {
+        "type": "CITY",
+        "lic": "GOBICHETTIPALAYAM",
+        "display_name": "கோபிசெட்டிபாளையம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 47
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 238,
+    "fields": {
+        "type": "CITY",
+        "lic": "METTUPALAYAM",
+        "display_name": "Mettupalayam",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 48
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 239,
+    "fields": {
+        "type": "CITY",
+        "lic": "METTUPALAYAM",
+        "display_name": "மேட்டுப்பாளையம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 48
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 240,
+    "fields": {
+        "type": "CITY",
+        "lic": "RAJAPALAYAM",
+        "display_name": "Rajapalayam",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 49
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 241,
+    "fields": {
+        "type": "CITY",
+        "lic": "RAJAPALAYAM",
+        "display_name": "ராஜபாளையம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 49
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 242,
+    "fields": {
+        "type": "CITY",
+        "lic": "SIVAKASI",
+        "display_name": "Sivakasi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 50
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 243,
+    "fields": {
+        "type": "CITY",
+        "lic": "SIVAKASI",
+        "display_name": "சிவகாசி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 50
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 244,
+    "fields": {
+        "type": "CITY",
+        "lic": "ARUPPUKKOTTAI",
+        "display_name": "Aruppukkottai",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 51
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 245,
+    "fields": {
+        "type": "CITY",
+        "lic": "ARUPPUKKOTTAI",
+        "display_name": "அருப்புக்கோட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 51
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 246,
+    "fields": {
+        "type": "CITY",
+        "lic": "AVINASHI",
+        "display_name": "Avinashi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 52
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 247,
+    "fields": {
+        "type": "CITY",
+        "lic": "AVINASHI",
+        "display_name": "அவிநாசி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 52
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 248,
+    "fields": {
+        "type": "CITY",
+        "lic": "PALLADAM",
+        "display_name": "Palladam",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 53
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 249,
+    "fields": {
+        "type": "CITY",
+        "lic": "PALLADAM",
+        "display_name": "பல்லடம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 53
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 250,
+    "fields": {
+        "type": "CITY",
+        "lic": "DHARAPURAM",
+        "display_name": "Dharapuram",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 54
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 251,
+    "fields": {
+        "type": "CITY",
+        "lic": "DHARAPURAM",
+        "display_name": "தரபுரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 54
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 252,
+    "fields": {
+        "type": "CITY",
+        "lic": "ODDANCHATRAM",
+        "display_name": "Oddanchatram",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 55
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 253,
+    "fields": {
+        "type": "CITY",
+        "lic": "ODDANCHATRAM",
+        "display_name": "ஒட்டன்சத்திரம்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 55
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 254,
+    "fields": {
+        "type": "CITY",
+        "lic": "NILAKOTTAI",
+        "display_name": "Nilakottai",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 56
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 255,
+    "fields": {
+        "type": "CITY",
+        "lic": "NILAKOTTAI",
+        "display_name": "நிலக்கோட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 56
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 256,
+    "fields": {
+        "type": "CITY",
+        "lic": "PARAMAKUDI",
+        "display_name": "Paramakudi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 57
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 257,
+    "fields": {
+        "type": "CITY",
+        "lic": "PARAMAKUDI",
+        "display_name": "பரமக்குடி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 57
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 258,
+    "fields": {
+        "type": "CITY",
+        "lic": "DEVAKOTTAI",
+        "display_name": "Devakottai",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 58
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 259,
+    "fields": {
+        "type": "CITY",
+        "lic": "DEVAKOTTAI",
+        "display_name": "தேவகோட்டை",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 58
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 260,
+    "fields": {
+        "type": "CITY",
+        "lic": "AMBUR",
+        "display_name": "Ambur",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 59
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 261,
+    "fields": {
+        "type": "CITY",
+        "lic": "AMBUR",
+        "display_name": "ஆம்பூர்",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 59
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 262,
+    "fields": {
+        "type": "CITY",
+        "lic": "VANIYAMBADI",
+        "display_name": "Vaniyambadi",
+        "language": "en",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 60
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 263,
+    "fields": {
+        "type": "CITY",
+        "lic": "VANIYAMBADI",
+        "display_name": "வாணியம்பாடி",
+        "language": "ta",
+        "parent_value": null,
+        "description": "",
+        "is_active": true,
+        "order": 60
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 264,
+    "fields": {
+        "type": "USER_MSG_1",
+        "lic": "WHEN_NO_CITY",
+        "display_name": "WHEN_NO_CITY",
+        "language": "en",
+        "parent_value": null,
+        "description": "If your city is not in the list, please select your district name from the dropdown above, and mention your exact city/village name in the Location/Address field below.",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 265,
+    "fields": {
+        "type": "USER_MSG_1",
+        "lic": "WHEN_NO_CITY",
+        "display_name": "WHEN_NO_CITY",
+        "language": "ta",
+        "parent_value": null,
+        "description": "உங்கள் நகரம் பட்டியலில் இல்லை என்றால், மேலே உள்ள கீழ்தோன்றலில் இருந்து உங்கள் மாவட்டத்தைத் தேர்ந்தெடுக்கவும், மேலும் உங்கள் சரியான நகரம்/கிராமத்தின் பெயரை கீழே உள்ள இடம்\\முகவரி புலத்தில் குறிப்பிடவும்.",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 266,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "SITE_TITLE",
+        "display_name": "SITE_TITLE",
+        "language": "en",
+        "parent_value": null,
+        "description": "வரிவிளம்பரங்கள்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 267,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "SITE_TITLE",
+        "display_name": "SITE_TITLE",
+        "language": "ta",
+        "parent_value": null,
+        "description": "வரிவிளம்பரங்கள்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 268,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "POST_AD_BUTTON",
+        "display_name": "POST_AD_BUTTON",
+        "language": "en",
+        "parent_value": null,
+        "description": "Post an Ad",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 269,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "POST_AD_BUTTON",
+        "display_name": "POST_AD_BUTTON",
+        "language": "ta",
+        "parent_value": null,
+        "description": "விளம்பரம் இடுங்கள்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 270,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "SELECT_CITY_HEADER",
+        "display_name": "SELECT_CITY_HEADER",
+        "language": "en",
+        "parent_value": null,
+        "description": "Select Your City",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 271,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "SELECT_CITY_HEADER",
+        "display_name": "SELECT_CITY_HEADER",
+        "language": "ta",
+        "parent_value": null,
+        "description": "உங்கள் நகரத்தைத் தேர்ந்தெடுக்கவும்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 272,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "BROWSE_CATEGORIES_HEADER",
+        "display_name": "BROWSE_CATEGORIES_HEADER",
+        "language": "en",
+        "parent_value": null,
+        "description": "Browse Categories",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 273,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "BROWSE_CATEGORIES_HEADER",
+        "display_name": "BROWSE_CATEGORIES_HEADER",
+        "language": "ta",
+        "parent_value": null,
+        "description": "Browse Categories",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 274,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "ALL_CITIES",
+        "display_name": "ALL_CITIES",
+        "language": "en",
+        "parent_value": null,
+        "description": "All Cities",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 275,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "ALL_CITIES",
+        "display_name": "ALL_CITIES",
+        "language": "ta",
+        "parent_value": null,
+        "description": "அனைத்து நகரங்கள்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 276,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "NO_CITIES_FOUND",
+        "display_name": "NO_CITIES_FOUND",
+        "language": "en",
+        "parent_value": null,
+        "description": "No cities found",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 277,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "NO_CITIES_FOUND",
+        "display_name": "NO_CITIES_FOUND",
+        "language": "ta",
+        "parent_value": null,
+        "description": "நகரங்கள் எதுவும் கிடைக்கவில்லை",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 278,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "CITIES_AVAILABLE",
+        "display_name": "CITIES_AVAILABLE",
+        "language": "en",
+        "parent_value": null,
+        "description": "cities available",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 279,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "CITIES_AVAILABLE",
+        "display_name": "CITIES_AVAILABLE",
+        "language": "ta",
+        "parent_value": null,
+        "description": "நகரங்கள் கிடைக்கின்றன",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 280,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "POST_YOUR_AD_TODAY",
+        "display_name": "POST_YOUR_AD_TODAY",
+        "language": "en",
+        "parent_value": null,
+        "description": "Post your ad today",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 281,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "POST_YOUR_AD_TODAY",
+        "display_name": "POST_YOUR_AD_TODAY",
+        "language": "ta",
+        "parent_value": null,
+        "description": "இன்றே உங்கள் விளம்பரத்தை இடுங்கள்",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 282,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "CITY_SEARCH_PLACEHOLDER",
+        "display_name": "CITY_SEARCH_PLACEHOLDER",
+        "language": "en",
+        "parent_value": null,
+        "description": "Search for your city...",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 283,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "CITY_SEARCH_PLACEHOLDER",
+        "display_name": "CITY_SEARCH_PLACEHOLDER",
+        "language": "ta",
+        "parent_value": null,
+        "description": "உங்கள் நகரத்தைத் தேடுங்கள்...",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 284,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "COPYRIGHT_PREFIX",
+        "display_name": "COPYRIGHT_PREFIX",
+        "language": "en",
+        "parent_value": null,
+        "description": "© 2025 Daily Classifieds",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 285,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "COPYRIGHT_PREFIX",
+        "display_name": "COPYRIGHT_PREFIX",
+        "language": "ta",
+        "parent_value": null,
+        "description": "© 2025 டெய்லி வகைப்படுத்தப்பட்டவை",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 286,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "LANGUAGE_EN",
+        "display_name": "LANGUAGE_EN",
+        "language": "en",
+        "parent_value": null,
+        "description": "English",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 287,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "LANGUAGE_EN",
+        "display_name": "LANGUAGE_EN",
+        "language": "ta",
+        "parent_value": null,
+        "description": "English",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 288,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "LANGUAGE_TA",
+        "display_name": "LANGUAGE_TA",
+        "language": "en",
+        "parent_value": null,
+        "description": "Tamil",
+        "is_active": true,
+        "order": 1
+    }
+},
+{
+    "model": "ads.lov",
+    "pk": 289,
+    "fields": {
+        "type": "UI_HOME",
+        "lic": "LANGUAGE_TA",
+        "display_name": "LANGUAGE_TA",
+        "language": "ta",
+        "parent_value": null,
+        "description": "தமிழ்",
+        "is_active": true,
+        "order": 1
+    }
+}
+]

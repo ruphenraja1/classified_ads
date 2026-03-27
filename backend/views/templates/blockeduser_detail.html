@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blocked User Detail</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea, select { width: 100%; padding: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Blocked User Detail</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-grid">
+            <label>Phone: <input type="text" name="phone" value="{{ blockeduser.phone }}" required></label>
+            <label>Status: <select name="status">
+                <option value="BLOCKED" {% if blockeduser.status == 'BLOCKED' %}selected{% endif %}>BLOCKED</option>
+                <option value="UNBLOCKED" {% if blockeduser.status == 'UNBLOCKED' %}selected{% endif %}>UNBLOCKED</option>
+            </select></label>
+            <label>Reason: <textarea name="reason">{{ blockeduser.reason }}</textarea></label>
+        </div>
+        <br><br>
+        <button type="submit">Save</button>
+        <a href="/api/admin/blockeduser/">Back to List</a>
+    </form>
+    {% if blocked_ads %}
+    <h2>Blocked Ads for this Phone</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ad in blocked_ads %}
+            <tr>
+                <td>{{ ad.id }}</td>
+                <td>{{ ad.title }}</td>
+                <td>{{ ad.description|truncatechars:50 }}</td>
+                <td>{{ ad.status }}</td>
+                <td>{{ ad.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>

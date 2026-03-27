@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOV Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-direction: column; }
+        .list { flex: 1; overflow-x: auto; border: 1px solid #ccc; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        
+        .drilldown { color: blue; cursor: pointer; text-decoration: underline; }
+        .query-row input { width: 100%; }
+        button { margin: 5px; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #f0f0f0; }
+        .active { background-color: #007bff; color: white; }
+        .inactive { background-color: #dc3545; color: white; }
+        
+        .sortable { cursor: pointer; user-select: none; }
+        .sortable:hover { background-color: #e0e0e0; }
+        .sort-icon { margin-left: 5px; font-size: 0.8em; }
+        .sort-asc, .sort-desc { background-color: #bbdefb !important; }
+        .selected-row { background-color: #e3f2fd !important; }
+        tr:hover { background-color: #f5f5f5; }
+        tr.selected-row:hover { background-color: #e3f2fd !important; }
+        
+        .detail {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+        .detail label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .detail input[type="text"],
+        .detail input[type="number"],
+        .detail select,
+        .detail textarea {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .detail textarea {
+            height: 80px;
+        }
+        .detail select#parent_value {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 4px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .modal-header h2 {
+            margin: 0;
+        }
+        .close-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close-btn:hover {
+            color: #000;
+        }
+        .modal-body label {
+            display: block;
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+        }
+        .modal-body input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .modal-body textarea {
+            width: 100%;
+            height: 120px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .modal-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .modal-buttons button {
+            padding: 8px 16px;
+        }
+        .import-result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .import-result.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .import-result.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>LOV Management</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <form method="GET" style="display: flex; gap: 10px;">
+            <input type="text" name="search" placeholder="Search type, display name, or lic..." value="{{ search }}" style="padding: 8px; width: 300px;">
+            <button type="submit" style="padding: 8px 16px;">Search</button>
+        </form>
+        <div>
+            <button onclick="addNew()">Add</button>
+            <button onclick="copySelected()">Copy</button>
+            <button onclick="deleteSelected()">Delete</button>
+            <button onclick="openImportModal()" style="background-color:#28a745;color:white;">Import CSV</button>
+            <form id="deleteForm" method="post" action="/employee/lov/delete/" style="display:none;">
+                  {% csrf_token %}
+            </form>
+            <form id="copyForm" method="post" action="/employee/lov/copy/" style="display:none;">
+                  {% csrf_token %}
+            </form>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            Total: {{ total }}
+        </div>
+        <div>
+            <button onclick="toggleQuery()">Advanced Query</button>
+            <button onclick="queryGo()" id="queryGo" style="display:none;">Query Go</button>
+        </div>
+    </div>
+    {% if has_query %}
+    <div>Total records: {{ total }}</div>
+    {% endif %}
+        <div class="list">
+            <table id="lovTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th class="sortable" onclick="sortTable('id')">ID <span class="sort-icon" data-sort="id">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('type')">Type <span class="sort-icon" data-sort="type">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('lic')">LIC <span class="sort-icon" data-sort="lic">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('display_name')">Display Name <span class="sort-icon" data-sort="display_name">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('language')">Language <span class="sort-icon" data-sort="language">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('parent_value')">Parent Value <span class="sort-icon" data-sort="parent_value">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('description')">Description <span class="sort-icon" data-sort="description">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('order')">Order <span class="sort-icon" data-sort="order">⇅</span></th>
+                        <th class="sortable" onclick="sortTable('is_active')">Active <span class="sort-icon" data-sort="is_active">⇅</span></th>
+                    </tr>
+                </thead>
+                <tbody id="lovBody">
+                    {% for lov in lovs %}
+                    <tr onclick="loadDetail({{ lov.id }}, event)" class="{% if forloop.first %}selected-row{% endif %}">
+                        <td onclick="event.stopPropagation();"><input type="checkbox" class="rowSelect" value="{{ lov.id }}"></td>
+                        <td>{{ lov.id }}</td>
+                        <td>{{ lov.type }}</td>
+                        <td>{{ lov.lic }}</td>
+                        <td>{{ lov.display_name }}</td>
+                        <td>{{ lov.language }}</td>
+                        <td>{% if lov.parent_value %}{{ lov.parent_value.display_name }}{% endif %}</td>
+                        <td>{{ lov.description|truncatechars:30 }}</td>
+                        <td>{{ lov.order }}</td>
+                        <td><span class="{% if lov.is_active %}active{% else %}inactive{% endif %}">{{ lov.is_active|yesno:"Active,Inactive" }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            {% if total_pages > 1 %}
+                {% for p in pages %}
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value }}&{% endif %}{% endfor %}page={{ p }}" style="margin: 0 5px; padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; {% if p == page %}background-color: #f0f0f0;{% endif %}">{{ p }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <!-- Edit Form -->
+        <div class="detail" id="lovFormPanel" style="display: none;">
+            <h3>Edit LOV</h3>
+            <form id="lovForm">
+                <input type="hidden" id="lov_id" name="id">
+                <div class="form-grid">
+                    <label>Type: <input type="text" name="type" id="type"></label>
+                    <label>LIC: <input type="text" name="lic" id="lic"></label>
+                    <label>Display Name: <input type="text" name="display_name" id="display_name"></label>
+                    <label>Language: <select name="language" id="language">
+                        <option value="en">English</option>
+                        <option value="ta">Tamil</option>
+                    </select></label>
+                    <label>Parent Value: 
+                        <input type="text" id="parent_value_search" placeholder="Search parent..." oninput="filterParentSelect(this.value)" style="width: 100%; padding: 4px; margin-bottom: 4px;">
+                        <button type="button" onclick="showAllParentValues()" style="padding: 2px 8px; margin-bottom: 4px;">Show All</button>
+                        <select name="parent_value" id="parent_value"></select>
+                    </label>
+                    <label>Order: <input type="number" name="order" id="order"></label>
+                    <label>Description: <textarea name="description" id="description"></textarea></label>
+                    <label style="display: inline;">Is Active <input type="checkbox" name="is_active" id="is_active" style="margin-left: 5px;"></label>
+                </div>
+                <br><br>
+                <button type="button" onclick="saveLov()">Save</button>
+                <button type="button" onclick="cancelForm()">Cancel</button>
+                <button type="button" onclick="deleteCurrentLov()" style="background-color:#dc3545;color:white;">Delete</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let isQueryMode = false;
+        let currentLovId = null;
+        
+        // Load first record by default if available
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstRow = document.querySelector('#lovBody tr');
+            if (firstRow) {
+                const firstId = firstRow.cells[1].textContent.trim();
+                if (firstId) {
+                    const event = { currentTarget: firstRow };
+                    loadDetail(parseInt(firstId), event);
+                }
+            }
+        });
+        
+        let currentSort = {
+            column: {% if sort_col %}'{{ sort_col }}'{% else %}null{% endif %},
+            direction: {% if sort_dir %}'{{ sort_dir }}'{% else %}'asc'{% endif %}
+        };
+        
+        document.getElementById('selectAll').addEventListener('change', function() {
+            const checks = document.querySelectorAll('.rowSelect');
+            checks.forEach(c => c.checked = this.checked);
+        });
+        
+        function toggleQuery() {
+            isQueryMode = !isQueryMode;
+            const tbody = document.getElementById('lovBody');
+            if (isQueryMode) {
+                tbody.innerHTML = "<tr class='query-row'><td></td><td><input type='text' id='q_id' placeholder='ID'></td><td><input type='text' id='q_type' placeholder='Type'></td><td><input type='text' id='q_lic' placeholder='LIC'></td><td><input type='text' id='q_display_name' placeholder='Display Name'></td><td><select id='q_language'><option value=''>All Languages</option><option value='en'>English</option><option value='ta'>Tamil</option></select></td><td></td><td></td><td></td><td><label>Active: </label><label>All <input type='radio' name='q_is_active' value='' checked></label><label>Yes <input type='radio' name='q_is_active' value='1'></label><label>No <input type='radio' name='q_is_active' value='0'></label></td></tr>";
+                document.getElementById('queryGo').style.display = 'inline';
+            } else {
+                location.reload();
+            }
+        }
+        
+        function queryGo() {
+            const params = new URLSearchParams();
+            const q_id = document.getElementById('q_id').value.trim();
+            const q_type = document.getElementById('q_type').value.trim();
+            const q_lic = document.getElementById('q_lic').value.trim();
+            const q_display_name = document.getElementById('q_display_name').value.trim();
+            const q_language = document.getElementById('q_language').value.trim();
+            const q_is_active = document.querySelector('input[name="q_is_active"]:checked').value;
+            if (q_id) params.append('id', q_id);
+            if (q_type) params.append('type', q_type);
+            if (q_lic) params.append('lic', q_lic);
+            if (q_display_name) params.append('display_name', q_display_name);
+            if (q_language) params.append('language', q_language);
+            if (q_is_active) params.append('is_active', q_is_active);
+            window.location.href = "/employee/lov/?" + params.toString();
+        }
+        
+        function addNew() {
+            window.location.href = '/employee/lov/new/';
+        }
+        
+        function copySelected() {
+            const selected = Array.from(document.querySelectorAll('.rowSelect:checked')).map(c => c.value);
+            if (selected.length === 1) {
+                window.location.href = '/employee/lov/new/?copy_from=' + selected[0];
+            } else if (selected.length > 1) {
+                alert('Please select only one LOV to copy');
+            } else {
+                alert('Please select at least one LOV to copy');
+            }
+        }
+        
+        function deleteSelected() {
+            const selected = Array.from(document.querySelectorAll('.rowSelect:checked')).map(c => c.value);
+            if (selected.length && confirm('Delete selected LOVs?')) {
+                const form = document.getElementById('deleteForm');
+                form.querySelectorAll('input[name="ids"]').forEach(el => el.remove());
+                selected.forEach(id => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'ids';
+                    input.value = id;
+                    form.appendChild(input);
+                });
+                form.submit();
+            }
+        }
+        
+        function cancelForm() {
+            document.getElementById('lovForm').reset();
+            document.getElementById('lov_id').value = '';
+            currentLovId = null;
+            document.querySelectorAll('#lovBody tr').forEach(row => row.classList.remove('selected-row'));
+            document.getElementById('lovFormPanel').style.display = 'none';
+        }
+        
+        function loadDetail(id, event) {
+            currentLovId = id;
+            
+            // Clear previous selection
+            document.querySelectorAll('#lovBody tr').forEach(row => row.classList.remove('selected-row'));
+            
+            // Highlight selected row
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('selected-row');
+            }
+            
+            fetch('/api/lov/detail/' + id + '/')
+                .then(res => res.ok ? res.json() : null)
+                .then(data => {
+                    if (!data) return;
+                    document.getElementById('lov_id').value = data.id;
+                    document.getElementById('type').value = data.type || '';
+                    document.getElementById('lic').value = data.lic || '';
+                    document.getElementById('display_name').value = data.display_name || '';
+                    document.getElementById('language').value = data.language || 'en';
+                    document.getElementById('order').value = data.order || 0;
+                    document.getElementById('is_active').checked = data.is_active;
+                    document.getElementById('description').value = data.description || '';
+                    
+                    // Populate parent_value select
+                    const parentSelect = document.getElementById('parent_value');
+                    parentSelect.innerHTML = '<option value="">---</option>';
+                    {% for p in parent_lovs %}
+                    parentSelect.innerHTML += '<option value="{{ p.id }}">{{ p.display_name }} ({{ p.type }})</option>';
+                    {% endfor %}
+                    if (data.parent_value_id) {
+                        parentSelect.value = data.parent_value_id;
+                    }
+                    
+                    // Show form
+                    document.getElementById('lovFormPanel').style.display = 'block';
+                })
+                .catch(err => {
+                    console.error('Error loading LOV detail', err);
+                    alert('Error loading record');
+                });
+        }
+        
+        function filterParentSelect(searchTerm) {
+            const select = document.getElementById('parent_value');
+            const options = select.options;
+            const searchLower = searchTerm.toLowerCase();
+            
+            for (let i = 0; i < options.length; i++) {
+                const text = options[i].text.toLowerCase();
+                if (text.includes(searchLower) || options[i].value.includes(searchLower)) {
+                    options[i].style.display = '';
+                } else {
+                    options[i].style.display = 'none';
+                }
+            }
+        }
+        
+        function showAllParentValues() {
+            document.getElementById('parent_value_search').value = '';
+            filterParentSelect('');
+        }
+        
+        function saveLov() {
+            if (!currentLovId) {
+                alert('No record selected');
+                return;
+            }
+            const data = {
+                type: document.getElementById('type').value,
+                lic: document.getElementById('lic').value,
+                display_name: document.getElementById('display_name').value,
+                language: document.getElementById('language').value,
+                parent_value_id: document.getElementById('parent_value').value || null,
+                order: parseInt(document.getElementById('order').value) || 0,
+                is_active: document.getElementById('is_active').checked,
+                description: document.getElementById('description').value,
+            };
+            fetch('/api/lov/detail/' + currentLovId + '/', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.ok ? res.json() : null)
+                .then(result => {
+                    if (result && result.status === 'updated') {
+                        alert('Saved successfully!');
+                        cancelForm();
+                        location.reload();
+                    } else {
+                        alert('Error saving: ' + (result ? JSON.stringify(result) : 'Unknown error'));
+                    }
+                })
+                .catch(err => {
+                    console.error('Error saving LOV', err);
+                    alert('Error saving record');
+                });
+        }
+        
+        function deleteCurrentLov() {
+            if (!currentLovId) {
+                alert('No record selected');
+                return;
+            }
+            if (!confirm('Delete this record?')) return;
+            fetch('/api/lov/detail/' + currentLovId + '/', {
+                method: 'DELETE'
+            })
+                .then(res => res.ok ? res.json() : null)
+                .then(result => {
+                    if (result && result.status === 'deleted') {
+                        alert('Deleted successfully!');
+                        cancelForm();
+                        location.reload();
+                    } else {
+                        alert('Error deleting: ' + (result ? JSON.stringify(result) : 'Unknown error'));
+                    }
+                })
+                .catch(err => {
+                    console.error('Error deleting LOV', err);
+                    alert('Error deleting record');
+                });
+        }
+        
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'asc';
+            }
+            
+            const url = new URL(window.location.href);
+            url.searchParams.set('sort', column);
+            url.searchParams.set('dir', currentSort.direction);
+            window.history.pushState({}, '', url);
+            
+            window.__sortColumn = column;
+            window.__sortDirection = currentSort.direction;
+            
+            updateSortIndicators();
+            applyClientSort();
+        }
+        
+        function updateSortIndicators() {
+            document.querySelectorAll('.sortable').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+                th.querySelector('.sort-icon').textContent = '⇅';
+            });
+            
+            if (currentSort.column) {
+                const activeTh = document.querySelector(`.sortable[onclick*="${currentSort.column}"]`);
+                if (activeTh) {
+                    activeTh.classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                    activeTh.querySelector('.sort-icon').textContent = currentSort.direction === 'asc' ? '↑' : '↓';
+                }
+            }
+        }
+        
+        function applyClientSort() {
+            const tbody = document.getElementById('lovBody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            if (!window.__sortColumn) return;
+            
+            rows.sort((a, b) => {
+                let aVal, bVal;
+                
+                switch(window.__sortColumn) {
+                    case 'id':
+                        aVal = parseInt(a.cells[1].textContent.trim());
+                        bVal = parseInt(b.cells[1].textContent.trim());
+                        break;
+                    case 'type':
+                        aVal = a.cells[2].textContent.trim().toLowerCase();
+                        bVal = b.cells[2].textContent.trim().toLowerCase();
+                        break;
+                    case 'lic':
+                        aVal = a.cells[3].textContent.trim().toLowerCase();
+                        bVal = b.cells[3].textContent.trim().toLowerCase();
+                        break;
+                    case 'display_name':
+                        aVal = a.cells[4].textContent.trim().toLowerCase();
+                        bVal = b.cells[4].textContent.trim().toLowerCase();
+                        break;
+                    case 'language':
+                        aVal = a.cells[5].textContent.trim().toLowerCase();
+                        bVal = b.cells[5].textContent.trim().toLowerCase();
+                        break;
+                    case 'parent_value':
+                        aVal = a.cells[6].textContent.trim().toLowerCase();
+                        bVal = b.cells[6].textContent.trim().toLowerCase();
+                        break;
+                    case 'description':
+                        aVal = a.cells[7].textContent.trim().toLowerCase();
+                        bVal = b.cells[7].textContent.trim().toLowerCase();
+                        break;
+                    case 'order':
+                        aVal = parseInt(a.cells[8].textContent.trim()) || 0;
+                        bVal = parseInt(b.cells[8].textContent.trim()) || 0;
+                        break;
+                    case 'is_active':
+                        aVal = a.cells[9].textContent.trim().toLowerCase();
+                        bVal = b.cells[9].textContent.trim().toLowerCase();
+                        break;
+                    default:
+                        return 0;
+                }
+                
+                if (aVal < bVal) return window.__sortDirection === 'asc' ? -1 : 1;
+                if (aVal > bVal) return window.__sortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+            
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+    
+    <!-- Import Modal -->
+    <div id="importModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Import LOV Records</h2>
+                <span class="close-btn" onclick="closeImportModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label for="importFile">Select CSV File:</label>
+                    <input type="file" id="importFile" accept=".csv">
+                    <small style="display: block; margin-top: 5px; color: #666;">
+                        CSV Format: type,Order,Description,LIC,Language,display_name,is_active
+                    </small>
+                </div>
+                <div style="margin-top: 15px;">
+                    <label>Or paste CSV data:</label>
+                    <textarea id="csvData" placeholder="Paste CSV data here..."></textarea>
+                </div>
+                <div id="importResult" class="import-result"></div>
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeImportModal()">Cancel</button>
+                    <button type="button" onclick="importLovData()" style="background-color:#28a745;color:white;">Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openImportModal() {
+            document.getElementById('importModal').style.display = 'block';
+            document.getElementById('importFile').value = '';
+            document.getElementById('csvData').value = '';
+            document.getElementById('importResult').innerHTML = '';
+            document.getElementById('importResult').className = 'import-result';
+        }
+        
+        function closeImportModal() {
+            document.getElementById('importModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('importModal');
+            if (event.target === modal) {
+                closeImportModal();
+            }
+        }
+        
+        function importLovData() {
+            const fileInput = document.getElementById('importFile');
+            const csvDataTextarea = document.getElementById('csvData');
+            const resultDiv = document.getElementById('importResult');
+            
+            let csvData = '';
+            
+            // Get data from file or textarea
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    csvData = e.target.result;
+                    sendImportRequest(csvData, resultDiv);
+                };
+                reader.readAsText(file);
+            } else if (csvDataTextarea.value.trim()) {
+                csvData = csvDataTextarea.value;
+                sendImportRequest(csvData, resultDiv);
+            } else {
+                resultDiv.className = 'import-result error';
+                resultDiv.innerHTML = 'Please select a file or paste CSV data.';
+            }
+        }
+        
+        function sendImportRequest(csvData, resultDiv) {
+            // Get CSRF token from the page
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value || 
+                              document.querySelector('input[name="csrfmiddlewaretoken"]')?.value ||
+                              getCookie('csrftoken');
+            
+            fetch('/employee/lov/import/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ csv_data: csvData })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultDiv.className = 'import-result success';
+                    resultDiv.innerHTML = `<strong>Import Successful!</strong><br/>
+                        Created: ${data.created}<br/>
+                        Updated: ${data.updated}<br/>
+                        <br/>
+                        <button onclick="location.reload()" style="background-color:#28a745;color:white;">Reload Page</button>`;
+                } else {
+                    resultDiv.className = 'import-result error';
+                    resultDiv.innerHTML = `<strong>Import Failed!</strong><br/>${data.error || 'An error occurred'}`;
+                }
+            })
+            .catch(error => {
+                resultDiv.className = 'import-result error';
+                resultDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            });
+        }
+        
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
