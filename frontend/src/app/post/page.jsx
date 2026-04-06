@@ -111,12 +111,16 @@ export default function PostPage() {
     setLanguage(lang);
 
     // Fetch labels from LOV with language
-    fetch(getLovUrl('UI_LABEL', lang))
+    const url = getLovUrl('UI_LABEL', lang);
+    console.log('Fetching labels from:', url);
+    fetch(url)
       .then(res => {
+        console.log('Labels response status:', res.status);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
       })
       .then(data => {
+        console.log('Labels data:', data);
         const items = data.results || data || [];
         const labelMap = {};
         items.forEach(item => {
@@ -535,12 +539,9 @@ export default function PostPage() {
                     onChange={e => setForm({...form, phone: normalizePhoneNumber(e.target.value)})}
                     className="input"
                     style={{ maxWidth: '300px' }}
-                    placeholder="Enter 10-digit phone number"
+                   
                     required
                   />
-                  <small style={{ color: 'var(--color-text-secondary)', fontSize: '0.875rem', display: 'block', marginTop: '0.25rem' }}>
-                    +91 will be added automatically
-                  </small>
                 </div>
               </div>
 

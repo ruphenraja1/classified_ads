@@ -3,7 +3,7 @@
  * Centralized API URL management for both development and production
  */
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : 'http://localhost:8000/api');
 
 /**
  * Helper function to construct API endpoints
@@ -11,7 +11,9 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000
  * @returns {string} - The full API URL
  */
 export const getApiUrl = (path) => {
-  return `${API_URL}/${path}`.replace(/\/+/g, '/').replace('://', '###').replace(/\//g, '/').replace('###', '://');
+  const base = API_URL.replace(/\/+$|^\s+|\s+$/g, '');
+  const normalizedPath = path.replace(/^\/+/, '');
+  return `${base}/${normalizedPath}`;
 };
 
 /**
@@ -22,9 +24,9 @@ export const getApiUrl = (path) => {
  * @returns {string} - The full LOV API URL
  */
 export const getLovUrl = (type, language, lic = null) => {
-  let url = `${API_URL}/v1/lov/?type=${type}&language=${language}`;
+  let url = getApiUrl(`v1/lov/?type=${encodeURIComponent(type)}&language=${encodeURIComponent(language)}`);
   if (lic) {
-    url += `&lic=${lic}`;
+    url += `&lic=${encodeURIComponent(lic)}`;
   }
   return url;
 };
