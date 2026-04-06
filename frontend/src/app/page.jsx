@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { API_URL, getLovUrl } from '../lib/api';
 
 export default function Home() {
   const [cities, setCities] = useState([]);
@@ -86,7 +87,7 @@ export default function Home() {
     setUiStrings({});
     
     // Fetch UI strings from LOV - always use current language
-    fetch(`http://localhost:8000/api/v1/lov/?type=UI_HOME&language=${language}`)
+    fetch(getLovUrl('UI_HOME', language))
       .then(res => res.json())
       .then(data => {
         const items = data.results || data || [];
@@ -100,8 +101,8 @@ export default function Home() {
 
     // Fetch cities in both languages for cross-language search
     Promise.all([
-      fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=en`),
-      fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=ta`)
+      fetch(getLovUrl('CITY', 'en')),
+      fetch(getLovUrl('CITY', 'ta'))
     ])
       .then(([resEn, resTa]) => {
         return Promise.all([resEn.json(), resTa.json()]);
@@ -146,8 +147,8 @@ export default function Home() {
 
     // Fetch Categories in both languages (like cities)
     Promise.all([
-      fetch(`http://localhost:8000/api/v1/lov/?type=CATEGORY&language=en`),
-      fetch(`http://localhost:8000/api/v1/lov/?type=CATEGORY&language=ta`)
+      fetch(getLovUrl('CATEGORY', 'en')),
+      fetch(getLovUrl('CATEGORY', 'ta'))
     ])
       .then(([resEn, resTa]) => {
         return Promise.all([resEn.json(), resTa.json()]);

@@ -1,0 +1,15 @@
+{
+  "name": "varivilambarangal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Varivilambarangal - Daily Classifieds Platform",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python manage.py runserver",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:frontend",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt"
+  },
+  "description": "Varivilambarangal Classifieds"
+}

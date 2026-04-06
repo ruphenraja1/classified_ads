@@ -2,23 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { API_URL, getLovUrl } from '../../lib/api';
 
 export default function PostPage() {
   const [cities, setCities] = useState([]);
   const [citiesAllLangs, setCitiesAllLangs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [imageUploadEnabled, setImageUploadEnabled] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [otpValue, setOtpValue] = useState('');
   const [images, setImages] = useState([]);
-   const [errors, setErrors] = useState({});
-   const [language, setLanguage] = useState('en');
-   const [labels, setLabels] = useState({});
-   const [userMessages, setUserMessages] = useState({});
-   const [devMode, setDevMode] = useState(false);
-   const [citySearchInput, setCitySearchInput] = useState('');
-   const [showCityDropdown, setShowCityDropdown] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [language, setLanguage] = useState('en');
+  const [labels, setLabels] = useState({});
+  const [userMessages, setUserMessages] = useState({});
+  const [citySearchInput, setCitySearchInput] = useState('');
+  const [showCityDropdown, setShowCityDropdown] = useState(false);
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -29,6 +26,38 @@ export default function PostPage() {
     phone: '',
     whatsapp: '',
   });
+
+  // Function to normalize phone numbers to +91XXXXXXXXXX format
+  const normalizePhoneNumber = (phone) => {
+    if (!phone) return '';
+
+    // Remove all non-digit characters
+    const digitsOnly = phone.replace(/\D/g, '');
+
+    // If it starts with 91 and has 12 digits total (91 + 10 digits), remove the 91
+    if (digitsOnly.startsWith('91') && digitsOnly.length === 12) {
+      return '+91' + digitsOnly.substring(2);
+    }
+
+    // If it has exactly 10 digits, add +91
+    if (digitsOnly.length === 10) {
+      return '+91' + digitsOnly;
+    }
+
+    // If it already starts with +91 and has 10 digits after, return as is
+    if (phone.startsWith('+91') && digitsOnly.length === 12 && digitsOnly.startsWith('91')) {
+      return '+91' + digitsOnly.substring(2);
+    }
+
+    // For other cases, just clean and add +91 if not present
+    const cleanDigits = digitsOnly.replace(/^91/, '');
+    if (cleanDigits.length === 10) {
+      return '+91' + cleanDigits;
+    }
+
+    // Return original if we can't normalize
+    return phone;
+  };
 
   // Do not auto-select a city by default. User must choose explicitly.
 
@@ -82,7 +111,7 @@ export default function PostPage() {
     setLanguage(lang);
 
     // Fetch labels from LOV with language
-    fetch(`http://localhost:8000/api/v1/lov/?type=UI_LABEL&language=${lang}`)
+    fetch(getLovUrl('UI_LABEL', lang))
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -98,7 +127,7 @@ export default function PostPage() {
       .catch(err => console.error('Error fetching labels:', err));
 
     // Fetch user messages from LOV with language
-    fetch(`http://localhost:8000/api/v1/lov/?type=USER_MSG_1&language=${lang}`)
+    fetch(getLovUrl('USER_MSG_1', lang))
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -115,8 +144,8 @@ export default function PostPage() {
 
     // Fetch cities in both languages for cross-language search
     Promise.all([
-      fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=en`),
-      fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=ta`)
+      fetch(getLovUrl('CITY', 'en')),
+      fetch(getLovUrl('CITY', 'ta'))
     ])
       .then(([resEn, resTa]) => {
         return Promise.all([resEn.json(), resTa.json()]);
@@ -124,7 +153,7 @@ export default function PostPage() {
       .then(([dataEn, dataTa]) => {
         let itemsEn = Array.isArray(dataEn.results) ? dataEn.results : (Array.isArray(dataEn) ? dataEn : []);
         let itemsTa = Array.isArray(dataTa.results) ? dataTa.results : (Array.isArray(dataTa) ? dataTa : []);
-        
+
         // Create a map: lic -> { en: name, ta: name }
         const cityMap = {};
         itemsEn.forEach(item => {
@@ -136,7 +165,7 @@ export default function PostPage() {
           if (!cityMap[item.lic]) cityMap[item.lic] = {};
           cityMap[item.lic].ta = item.display_name;
         });
-        
+
         // Store all cities for search
         const allCities = Object.entries(cityMap).map(([lic, names]) => ({
           id: lic,
@@ -145,7 +174,7 @@ export default function PostPage() {
           order: names.order || 0
         }));
         setCitiesAllLangs(allCities);
-        
+
         // Create sorted list for selected language
         const sortedByOrder = allCities.sort((a, b) => {
           if (a.order !== b.order) return a.order - b.order;
@@ -156,7 +185,7 @@ export default function PostPage() {
       .catch(err => console.error('Error fetching cities:', err));
 
     // Fetch categories from LOV with language
-    fetch(`http://localhost:8000/api/v1/lov/?type=CATEGORY&language=${lang}`)
+    fetch(getLovUrl('CATEGORY', lang))
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -168,7 +197,7 @@ export default function PostPage() {
       .catch(err => console.error('Error fetching categories:', err));
 
     // Check if image upload is enabled
-    fetch('http://localhost:8000/api/v1/lov/?type=UI_CONTROL&lic=ENABLE_IMAGE_UPLOAD')
+    fetch(getLovUrl('UI_CONTROL', null, 'ENABLE_IMAGE_UPLOAD'))
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         return res.json();
@@ -180,74 +209,7 @@ export default function PostPage() {
         }
       })
       .catch(err => console.error('Error checking image upload:', err));
-
-    // Check if dev mode for post ad without OTP
-    fetch('http://localhost:8000/api/v1/lov/?type=ENABLE_POST_AD_DEV&lic=Y')
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        const items = data.results || data || [];
-        if (items.length > 0 && items[0].display_name === 'Y') {
-          setDevMode(true);
-        }
-      })
-      .catch(err => console.error('Error checking dev mode:', err));
   }, [language]);
-
-
-
-  const sendOtp = async () => {
-    if (!form.phone || !form.phone.match(/^\+91\d{10}$/)) {
-      setErrors({ phone: 'Phone number must be in format +91XXXXXXXXXX.' });
-      return;
-    }
-    setErrors({});
-    const res = await fetch('http://localhost:8000/api/v1/send-otp/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone: form.phone }),
-    });
-    if (res.ok) {
-      const data = await res.json();
-      setOtpSent(true);
-      alert('OTP sent!');
-    } else {
-      const text = await res.text();
-      try {
-        const err = JSON.parse(text);
-        setErrors(err);
-      } catch {
-        setErrors({ error: `Server error: ${res.status}` });
-      }
-    }
-  };
-
-  const verifyOtp = async () => {
-    if (!otpValue) {
-      setErrors({ otp: 'Please enter OTP' });
-      return;
-    }
-    const res = await fetch('http://localhost:8000/api/v1/verify-otp/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone: form.phone, otp: otpValue }),
-    });
-    const text = await res.text();
-    try {
-      const data = JSON.parse(text);
-      if (data.valid) {
-        setOtpVerified(true);
-        alert('OTP verified!');
-        setErrors({});
-      } else {
-        setErrors({ otp: 'Invalid OTP' });
-      }
-    } catch {
-      setErrors({ otp: 'Server error, please try again' });
-    }
-  };
 
   const hasExcessiveRepetition = (text, limit = 0.5) => {
     const t = text.replace(/\s/g, "");
@@ -317,10 +279,8 @@ export default function PostPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!devMode && !otpVerified) {
-      alert('Please verify OTP first');
-      return;
-    }
+    // OTP verification disabled - allow posting without OTP
+
     // Validate required fields
     const requiredFields = ['title', 'description', 'location', 'city', 'category', 'phone'];
     const newErrors = {};
@@ -358,7 +318,7 @@ export default function PostPage() {
     data.append('phone', form.phone);
     data.append('whatsapp', form.whatsapp || '');
     images.forEach(img => data.append('images', img));
-    const res = await fetch('http://localhost:8000/api/v1/ads/', {
+    const res = await fetch(`${API_URL}/v1/ads/`, {
       method: 'POST',
       body: data,
     });
@@ -374,8 +334,6 @@ export default function PostPage() {
         });
         setCitySearchInput('');
         setImages([]);
-        setOtpSent(false);
-        setOtpVerified(false);
         setErrors({});
       } else {
         setErrors(responseData);
@@ -397,20 +355,20 @@ export default function PostPage() {
           </div>
         </div>
       </header>
-      
+
       <main className="section">
         <div className="container">
           <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
             {Object.keys(errors).length > 0 && (
-              <div className="card" style={{ 
-                backgroundColor: '#FEE2E2', 
+              <div className="card" style={{
+                backgroundColor: '#FEE2E2',
                 borderColor: '#EF4444',
                 marginBottom: '2rem',
                 padding: '1.5rem'
               }}>
                 {Object.entries(errors).map(([key, value]) => (
-                  <p key={key} style={{ 
-                    color: '#DC2626', 
+                  <p key={key} style={{
+                    color: '#DC2626',
                     margin: '0.5rem 0',
                     fontWeight: 600
                   }}>
@@ -419,61 +377,60 @@ export default function PostPage() {
                 ))}
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.TITLE_LABEL || 'Title'}
                 </label>
-                <input 
-                  type="text" 
-                  value={form.title} 
-                  onChange={e => setForm({...form, title: e.target.value})} 
-                  className="input" 
-                  required 
-                  maxLength={30} 
+                <input
+                  type="text"
+                  value={form.title}
+                  onChange={e => setForm({...form, title: e.target.value})}
+                  className="input"
+                  required
+                  maxLength={30}
                 />
               </div>
-              
+
               <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.DESC_LABEL || 'Description'}
                 </label>
-                <textarea 
-                  value={form.description} 
-                  onChange={e => setForm({...form, description: e.target.value})} 
-                  className="input" 
+                <textarea
+                  value={form.description}
+                  onChange={e => setForm({...form, description: e.target.value})}
+                  className="input"
                   style={{ minHeight: '150px', resize: 'vertical' }}
-                  required 
+                  required
                 />
               </div>
-              
 
               <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.CITY_LABEL || 'City'}
                 </label>
                 <div className="relative">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={citySearchInput}
                     onChange={e => {
                       setCitySearchInput(e.target.value);
@@ -482,18 +439,18 @@ export default function PostPage() {
                     onFocus={() => { setShowCityDropdown(true); setCitySearchInput(''); }}
                     onBlur={() => setTimeout(() => setShowCityDropdown(false), 200)}
                     placeholder="Search City..."
-                    className="input" 
+                    className="input"
                     required={!form.city}
                     autoComplete="off"
                   />
                   {showCityDropdown && (
-                    <ul className="select-dropdown" style={{ 
-                      position: 'absolute', 
-                      top: '100%', 
-                      left: 0, 
-                      right: 0, 
-                      zIndex: 10, 
-                      marginTop: '0.5rem' 
+                    <ul className="select-dropdown" style={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      right: 0,
+                      zIndex: 10,
+                      marginTop: '0.5rem'
                     }}>
                       {filteredCities.length > 0 ? (
                         filteredCities.map(c => (
@@ -507,9 +464,9 @@ export default function PostPage() {
                     </ul>
                   )}
                 </div>
-                
-                <p style={{ 
-                  fontSize: '0.9rem', 
+
+                <p style={{
+                  fontSize: '0.9rem',
                   color: 'var(--color-text-muted)',
                   marginTop: '0.5rem',
                   fontStyle: 'italic',
@@ -518,40 +475,41 @@ export default function PostPage() {
                   💡 {userMessages.WHEN_NO_CITY || 'If your city is not in the list, please select the nearest district name from the dropdown above, and mention your exact city/village name in the Location/Address field below.'}
                 </p>
               </div>
-                            <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.LOCATION_LABEL || 'Location'}
                 </label>
-                <input 
-                  type="text" 
-                  value={form.location} 
-                  onChange={e => setForm({...form, location: e.target.value})} 
-                  className="input" 
-                  required 
-                  maxLength={170} 
+                <input
+                  type="text"
+                  value={form.location}
+                  onChange={e => setForm({...form, location: e.target.value})}
+                  className="input"
+                  required
+                  maxLength={170}
                 />
               </div>
-              
+
               <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.CATEGORY_LABEL || 'Category'}
                 </label>
-                <select 
-                  value={form.category} 
-                  onChange={e => setForm({...form, category: e.target.value})} 
-                  className="input" 
+                <select
+                  value={form.category}
+                  onChange={e => setForm({...form, category: e.target.value})}
+                  className="input"
                   style={{ cursor: 'pointer' }}
                   required
                 >
@@ -559,141 +517,79 @@ export default function PostPage() {
                   {categories.map(c => <option key={c.value} value={c.value}>{c.name}</option>)}
                 </select>
               </div>
-              
-              {!devMode && (
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
+                  marginBottom: '0.75rem',
+                  color: 'var(--color-text-primary)'
+                }}>
+                  {labels.PHONE_LABEL || 'Phone'}
+                </label>
                 <div>
-                  <label style={{ 
-                    display: 'block', 
-                    fontSize: '1.125rem', 
-                    fontWeight: 600, 
-                    marginBottom: '0.75rem',
-                    color: 'var(--color-text-primary)'
-                  }}>
-                    {labels.PHONE_LABEL || 'Phone'}
-                  </label>
-                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    <input 
-                      type="tel" 
-                      value={form.phone} 
-                      onChange={e => setForm({...form, phone: e.target.value})} 
-                      className="input" 
-                      style={{ flex: '1', minWidth: '200px' }}
-                      required 
-                    />
-                    <button 
-                      type="button" 
-                      onClick={sendOtp} 
-                      className="btn"
-                      style={{ whiteSpace: 'nowrap' }}
-                    >
-                      {labels.SEND_OTP || 'Send OTP'}
-                    </button>
-                  </div>
-                </div>
-              )}
-              
-              {!devMode && otpSent && (
-                <div>
-                  <label style={{ 
-                    display: 'block', 
-                    fontSize: '1.125rem', 
-                    fontWeight: 600, 
-                    marginBottom: '0.75rem',
-                    color: 'var(--color-text-primary)'
-                  }}>
-                    {labels.VERIFY_OTP_LABEL || 'OTP'}
-                  </label>
-                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    <input 
-                      type="text" 
-                      value={otpValue} 
-                      onChange={e => setOtpValue(e.target.value)} 
-                      className="input" 
-                      style={{ flex: '0 0 150px' }}
-                    />
-                    <button 
-                      type="button" 
-                      onClick={verifyOtp} 
-                      className="btn"
-                      style={{ whiteSpace: 'nowrap' }}
-                    >
-                      {labels.VERIFY_OTP || 'Verify OTP'}
-                    </button>
-                  </div>
-                </div>
-              )}
-              
-              {devMode && (
-                <div>
-                  <label style={{ 
-                    display: 'block', 
-                    fontSize: '1.125rem', 
-                    fontWeight: 600, 
-                    marginBottom: '0.75rem',
-                    color: 'var(--color-text-primary)'
-                  }}>
-                    {labels.PHONE_LABEL || 'Phone'}
-                  </label>
-                  <input 
-                    type="tel" 
-                    value={form.phone} 
-                    onChange={e => setForm({...form, phone: e.target.value})} 
-                    className="input" 
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    onChange={e => setForm({...form, phone: normalizePhoneNumber(e.target.value)})}
+                    className="input"
                     style={{ maxWidth: '300px' }}
-                    required 
+                    placeholder="Enter 10-digit phone number"
+                    required
                   />
+                  <small style={{ color: 'var(--color-text-secondary)', fontSize: '0.875rem', display: 'block', marginTop: '0.25rem' }}>
+                    +91 will be added automatically
+                  </small>
                 </div>
-              )}
-              
+              </div>
+
               {imageUploadEnabled && (
                 <div>
-                  <label style={{ 
-                    display: 'block', 
-                    fontSize: '1.125rem', 
-                    fontWeight: 600, 
+                  <label style={{
+                    display: 'block',
+                    fontSize: '1.125rem',
+                    fontWeight: 600,
                     marginBottom: '0.75rem',
                     color: 'var(--color-text-primary)'
                   }}>
                     {labels.IMAGES_LABEL || 'Images (up to 5)'}
                   </label>
-                  <input 
-                    type="file" 
-                    multiple 
-                    accept="image/*" 
-                    onChange={e => setImages(Array.from(e.target.files))} 
-                    className="input" 
+                  <input
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={e => setImages(Array.from(e.target.files))}
+                    className="input"
                     style={{ padding: '0.75rem' }}
                   />
                 </div>
               )}
-              
+
               <div>
-                <label style={{ 
-                  display: 'block', 
-                  fontSize: '1.125rem', 
-                  fontWeight: 600, 
+                <label style={{
+                  display: 'block',
+                  fontSize: '1.125rem',
+                  fontWeight: 600,
                   marginBottom: '0.75rem',
                   color: 'var(--color-text-primary)'
                 }}>
                   {labels.WHATSAPP_LABEL || 'WhatsApp (optional)'}
                 </label>
-                <input 
-                  type="tel" 
-                  value={form.whatsapp} 
-                  onChange={e => setForm({...form, whatsapp: e.target.value})} 
-                  className="input" 
+                <input
+                  type="tel"
+                  value={form.whatsapp}
+                  onChange={e => setForm({...form, whatsapp: e.target.value})}
+                  className="input"
                 />
               </div>
-              
+
               <div style={{ marginTop: '1rem' }}>
-                <button 
-                  type="submit" 
-                  disabled={!devMode && !otpVerified} 
+                <button
+                  type="submit"
                   className="btn"
-                  style={{ 
-                    width: '100%',
-                    opacity: (!devMode && !otpVerified) ? 0.5 : 1,
-                    cursor: (!devMode && !otpVerified) ? 'not-allowed' : 'pointer'
+                  style={{
+                    width: '100%'
                   }}
                 >
                   {labels.POST_BUTTON || 'Post Ad'}
@@ -706,3 +602,4 @@ export default function PostPage() {
     </div>
   );
 }
+

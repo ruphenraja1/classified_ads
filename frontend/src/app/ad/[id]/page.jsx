@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { API_URL } from '../../../lib/api';
 
 export default function AdPage({ params }) {
   const [ad, setAd] = useState(null);
@@ -13,7 +14,7 @@ export default function AdPage({ params }) {
       const { id } = await params;
       const lang = localStorage.getItem('language') || 'en';
       setLanguage(lang);
-      fetch(`http://localhost:8000/api/v1/ads/${id}/`)
+      fetch(`${API_URL}/v1/ads/${id}/`)
         .then(res => res.json())
         .then(data => {
           setAd(data);
@@ -125,7 +126,7 @@ export default function AdPage({ params }) {
                       }}
                     >
                       <img 
-                        src={`http://localhost:8000${img}`} 
+                        src={`${API_URL}${img}`} 
                         alt={`Ad image ${i + 1}`}
                         style={{ width: '100%', height: 'auto', display: 'block' }}
                       />

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect, use } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { API_URL, getLovUrl } from '../../../lib/api';
 
 function safeSearchParams(obj = {}) {
   return Object.fromEntries(
@@ -100,9 +101,9 @@ export default function Page({ params }) {
 
       // Fetch cities in both languages for cross-language search
       const [citiesEnRes, citiesTaRes, categoriesRes] = await Promise.all([
-        fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=en`),
-        fetch(`http://localhost:8000/api/v1/lov/?type=CITY&language=ta`),
-        fetch(`http://localhost:8000/api/v1/lov/?type=CATEGORY&language=${lang}`)
+        fetch(getLovUrl('CITY', 'en')),
+        fetch(getLovUrl('CITY', 'ta')),
+        fetch(getLovUrl('CATEGORY', lang))
       ]);
 
       const citiesEnResponse = citiesEnRes.ok ? await citiesEnRes.json() : { results: [] };
@@ -154,7 +155,7 @@ export default function Page({ params }) {
       setCategories(categoriesData);
 
       // Fetch ads
-      const apiUrl = 'http://localhost:8000/api/v1/ads/';
+      const apiUrl = `${API_URL}/v1/ads/`;
       const paramsQs = new URLSearchParams();
       paramsQs.append('category', slug);
       if (sort) paramsQs.append('sort', sort);
@@ -187,7 +188,7 @@ export default function Page({ params }) {
       if (city) todaysParams.append('city', city);
       todaysParams.append('posted', '1');
       todaysParams.append('page', '1');
-      const todaysRes = await fetch(`http://localhost:8000/api/v1/ads/?${todaysParams}`);
+      const todaysRes = await fetch(`${apiUrl}?${todaysParams}`);
       const todaysData = todaysRes.ok ? await todaysRes.json() : { count: 0 };
       setTodaysAdsCount(todaysData.count || todaysData.results?.length || 0);
 
