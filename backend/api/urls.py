@@ -1,5 +1,8 @@
-from django.urls import path, include
+# backend/api/urls.py
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('v1/', include('api.v1.urls')),
+    path('lov/', views.lov, name='lov'),
+    path('users/', views.users, name='users'),
 ]
