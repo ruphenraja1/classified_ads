@@ -28,14 +28,14 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Hosts
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='varivilambarangal.com,www.varivilambarangal.com').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,varivilambarangal.com,www.varivilambarangal.com,46.225.238.87').split(',')
 
 # CORS
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://varivilambarangal.com,https://www.varivilambarangal.com').split(',')
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://127.0.0.1:3000,https://varivilambarangal.com,https://www.varivilambarangal.com,http://46.225.238.87').split(',')
 CORS_ALLOW_ALL_ORIGINS = False
 
 # CSRF
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://varivilambarangal.com,https://www.varivilambarangal.com').split(',')
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='http://localhost:3000,http://127.0.0.1:3000,https://varivilambarangal.com,https://www.varivilambarangal.com').split(',')
 # Application definition
 
 INSTALLED_APPS = [

@@ -3,7 +3,7 @@
  * Centralized API URL management for both development and production
  */
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api` : 'http://localhost:8000/api');
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
 /**
  * Helper function to construct API endpoints
