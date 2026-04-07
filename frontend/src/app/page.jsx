@@ -86,10 +86,18 @@ export default function Home() {
     // Clear UI strings immediately to prevent showing old language
     setUiStrings({});
     
+    const apiUrl = getLovUrl('UI_HOME', language);
+    console.log('API URL:', apiUrl);
+    console.log('Trying to fetch from:', apiUrl);
+    
     // Fetch UI strings from LOV - always use current language
-    fetch(getLovUrl('UI_HOME', language))
-      .then(res => res.json())
+    fetch(apiUrl)
+      .then(res => {
+        console.log('Response status:', res.status);
+        return res.json();
+      })
       .then(data => {
+        console.log('UI_HOME data received:', data.length, 'items');
         const items = data.results || data || [];
         const stringsMap = {};
         items.forEach(item => {
@@ -100,6 +108,7 @@ export default function Home() {
       .catch(err => console.error('Error fetching UI strings:', err));
 
     // Fetch cities in both languages for cross-language search
+    console.log('Fetching cities from:', getLovUrl('CITY', 'en'));
     Promise.all([
       fetch(getLovUrl('CITY', 'en')),
       fetch(getLovUrl('CITY', 'ta'))

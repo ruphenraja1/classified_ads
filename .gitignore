@@ -4,11 +4,14 @@ frontend/node_modules/
 
 # Python
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 *.pyc
-*.so
+*.pyo
+*.pyd
 .Python
+pip-wheel-metadata/
 build/
 dist/
 *.egg-info/
@@ -16,6 +19,7 @@ dist/
 
 # Django
 *.log
+*.sqlite3
 db.sqlite3
 backend/db.sqlite3
 local_settings.py
@@ -23,8 +27,6 @@ local_settings.py
 # Next.js
 .next/
 frontend/.next/
-
-# Next.js Standalone build output
 frontend/.next/standalone/
 
 # TypeScript
@@ -37,12 +39,20 @@ frontend/next-env.d.ts
 .env.local
 .env.*.local
 .env.prod
-.env.prod.example
+.env.production
+.env.production.local
 backend/.env
 frontend/.env
 
 # Development databases
 dev.db
+
+# Cache and test output
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+htmlcov/
 
 # IDE
 .idea/
@@ -52,29 +62,24 @@ dev.db
 
 # OS files
 Thumbs.db
-nul
+Desktop.ini
 .DS_Store
+nul
 
 # ML Models
 LLM_Model/
 
-# Scripts
-build.sh
-migrate_sqlite_to_pg.py
-
-# Test files
-backend/tests/
-
-# Debug files
-backend/debug/
-backend/scripts/
-
-# Misc
-coverage/
-.vercel
-*.pem
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
+# Misc
+.vercel
+*.pem
+
+# Local startup scripts (optional - keep as dev docs, exclude from prod deployment)
+*.sh
+*.ps1
 IMPORT_FEATURE_SUMMARY*.md
