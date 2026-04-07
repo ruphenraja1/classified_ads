@@ -78,11 +78,7 @@ yarn-error.log*
 # Misc
 .vercel
 *.pem
-<<<<<<< HEAD
-=======
-
 # Local startup scripts (optional - keep as dev docs, exclude from prod deployment)
 *.sh
 *.ps1
 IMPORT_FEATURE_SUMMARY*.md
->>>>>>> f660f1f8c48076d47ffa71b2254a7674936948a9
